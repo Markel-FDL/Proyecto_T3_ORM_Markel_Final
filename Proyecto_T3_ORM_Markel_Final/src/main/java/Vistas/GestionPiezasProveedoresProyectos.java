@@ -320,10 +320,10 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_cantidadActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarDatos();
+        cargaDeDatos();
     }//GEN-LAST:event_formWindowOpened
 
-    private void cargarDatos() {
+    private void cargaDeDatos() {
         listaProyectos = acciones.listarProyectos();
         String[] codigosOperacines = new String[listaProyectos.size()];
         for (int i = 0; i < listaProyectos.size(); i++) {
