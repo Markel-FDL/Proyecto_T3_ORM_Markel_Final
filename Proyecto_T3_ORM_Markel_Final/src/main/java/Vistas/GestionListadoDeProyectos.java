@@ -5,6 +5,7 @@
 package Vistas;
 
 
+import com.mycompany.ProveedoresEntity;
 import com.mycompany.ProyectosEntity;
 import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
@@ -54,14 +55,15 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        datoCiudad = new javax.swing.JTextField();
-        datoNombre = new javax.swing.JTextField();
-        banterior = new javax.swing.JButton();
-        bsiguiente = new javax.swing.JButton();
-        bprimero = new javax.swing.JButton();
-        bultimo = new javax.swing.JButton();
+        ciudadProy2 = new javax.swing.JTextField();
+        nombreProy2 = new javax.swing.JTextField();
+        anteriorBoton = new javax.swing.JButton();
+        siguienteBoton = new javax.swing.JButton();
+        primeroBoton = new javax.swing.JButton();
+        ultimoBoton = new javax.swing.JButton();
         numero = new javax.swing.JLabel();
-        datoCodigo = new javax.swing.JTextField();
+        codigoProy2 = new javax.swing.JTextField();
+        eliminarBoton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -136,7 +138,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombreProy, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ciudadProy, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -187,49 +189,56 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
 
         jLabel7.setText("Ciudad: ");
 
-        datoCiudad.setEditable(false);
+        ciudadProy2.setEditable(false);
 
-        datoNombre.setEditable(false);
-        datoNombre.addActionListener(new java.awt.event.ActionListener() {
+        nombreProy2.setEditable(false);
+        nombreProy2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datoNombreActionPerformed(evt);
+                nombreProy2ActionPerformed(evt);
             }
         });
 
-        banterior.setText("<<");
-        banterior.addActionListener(new java.awt.event.ActionListener() {
+        anteriorBoton.setText("<<");
+        anteriorBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                banteriorActionPerformed(evt);
+                anteriorBotonActionPerformed(evt);
             }
         });
 
-        bsiguiente.setText(">>");
-        bsiguiente.addActionListener(new java.awt.event.ActionListener() {
+        siguienteBoton.setText(">>");
+        siguienteBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bsiguienteActionPerformed(evt);
+                siguienteBotonActionPerformed(evt);
             }
         });
 
-        bprimero.setText("|<<");
-        bprimero.addActionListener(new java.awt.event.ActionListener() {
+        primeroBoton.setText("|<<");
+        primeroBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bprimeroActionPerformed(evt);
+                primeroBotonActionPerformed(evt);
             }
         });
 
-        bultimo.setText(">>|");
-        bultimo.addActionListener(new java.awt.event.ActionListener() {
+        ultimoBoton.setText(">>|");
+        ultimoBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bultimoActionPerformed(evt);
+                ultimoBotonActionPerformed(evt);
             }
         });
 
         numero.setText("1/2");
 
-        datoCodigo.setEditable(false);
-        datoCodigo.addActionListener(new java.awt.event.ActionListener() {
+        codigoProy2.setEditable(false);
+        codigoProy2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datoCodigoActionPerformed(evt);
+                codigoProy2ActionPerformed(evt);
+            }
+        });
+
+        eliminarBoton2.setText("Eliminar");
+        eliminarBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBoton2ActionPerformed(evt);
             }
         });
 
@@ -240,35 +249,34 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(numero))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(datoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel7)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(datoCodigo))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(25, 25, 25)
-                                    .addComponent(datoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(bprimero)
-                                        .addComponent(banterior))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(codigoProy2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGap(66, 66, 66)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(anteriorBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                .addComponent(primeroBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(12, 12, 12)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ciudadProy2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(eliminarBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(bsiguiente)
-                                        .addComponent(bultimo))
-                                    .addGap(33, 33, 33)))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(numero)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                                        .addComponent(siguienteBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ultimoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(nombreProy2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,26 +284,32 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigoProy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(datoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreProy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(datoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ciudadProy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(numero)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bprimero)
-                    .addComponent(bultimo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bsiguiente)
-                    .addComponent(banterior))
-                .addGap(32, 32, 32))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(primeroBoton)
+                            .addComponent(ultimoBoton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(siguienteBoton)
+                            .addComponent(anteriorBoton))
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(eliminarBoton2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Listado de proyectos", jPanel3);
@@ -407,47 +421,69 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
         codProy.setText("");
     }
 
-    private void datoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datoNombreActionPerformed
+    private void nombreProy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProy2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_datoNombreActionPerformed
+    }//GEN-LAST:event_nombreProy2ActionPerformed
 
-    private void banteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banteriorActionPerformed
+    private void anteriorBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorBotonActionPerformed
         if (contador > 0 ){
             contador--;
             cargarProyecto(contador);
         }
-    }//GEN-LAST:event_banteriorActionPerformed
+    }//GEN-LAST:event_anteriorBotonActionPerformed
 
-    private void bsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsiguienteActionPerformed
+    private void siguienteBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBotonActionPerformed
         if (contador < (listaProyectos.size() - 1) ){
             contador++;
             cargarProyecto(contador);
         }
-    }//GEN-LAST:event_bsiguienteActionPerformed
+    }//GEN-LAST:event_siguienteBotonActionPerformed
 
-    private void bprimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bprimeroActionPerformed
+    private void primeroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroBotonActionPerformed
         contador = 0;
         cargarProyecto(contador);
-    }//GEN-LAST:event_bprimeroActionPerformed
+    }//GEN-LAST:event_primeroBotonActionPerformed
 
-    private void bultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bultimoActionPerformed
+    private void ultimoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoBotonActionPerformed
         contador = listaProyectos.size() - 1;
         cargarProyecto(contador);
-    }//GEN-LAST:event_bultimoActionPerformed
+    }//GEN-LAST:event_ultimoBotonActionPerformed
 
     private void codProyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codProyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codProyActionPerformed
 
-    private void datoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datoCodigoActionPerformed
+    private void codigoProy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProy2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_datoCodigoActionPerformed
+    }//GEN-LAST:event_codigoProy2ActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        cargarTab();
+        cargarDatos();
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void cargarTab() {
+    private void eliminarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBoton2ActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
+        if (opcion == 0){
+            ProveedoresEntity p = new ProveedoresEntity();
+            p.setCodigo(listaProyectos.get(contador).getCodigo());
+            switch (acciones.eliminarProveedor(p)) {
+                case 0 :
+                    JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
+                    cargarDatos();
+                    break;
+                case 1 :
+                    JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 2 :
+                    JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "<< Se ha cancelado la accion >>");
+        }
+    }//GEN-LAST:event_eliminarBoton2ActionPerformed
+
+    private void cargarDatos() {
         listaProyectos = acciones.listarProyectos();
         contador = 0;
         cargarProyecto(contador);
@@ -456,9 +492,9 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     private void cargarProyecto(int contador) {
         if (!listaProyectos.isEmpty()) {
             numero.setText(contador + 1 + "/" + listaProyectos.size());
-            datoCodigo.setText(listaProyectos.get(contador).getCodigo());
-            datoNombre.setText(listaProyectos.get(contador).getNombre());
-            datoCiudad.setText(listaProyectos.get(contador).getCiudad());
+            codigoProy2.setText(listaProyectos.get(contador).getCodigo());
+            nombreProy2.setText(listaProyectos.get(contador).getNombre());
+            ciudadProy2.setText(listaProyectos.get(contador).getCiudad());
         }
     }
 
@@ -529,16 +565,13 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton banterior;
-    private javax.swing.JButton bprimero;
-    private javax.swing.JButton bsiguiente;
-    private javax.swing.JButton bultimo;
+    private javax.swing.JButton anteriorBoton;
     private javax.swing.JTextField ciudadProy;
+    private javax.swing.JTextField ciudadProy2;
     private javax.swing.JTextField codProy;
-    private javax.swing.JTextField datoCiudad;
-    private javax.swing.JTextField datoCodigo;
-    private javax.swing.JTextField datoNombre;
+    private javax.swing.JTextField codigoProy2;
     private javax.swing.JButton eliminarBoton;
+    private javax.swing.JButton eliminarBoton2;
     private javax.swing.JButton insertarBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -552,6 +585,10 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     private javax.swing.JButton limpiarBoton;
     private javax.swing.JButton modificarBoton;
     private javax.swing.JTextField nombreProy;
+    private javax.swing.JTextField nombreProy2;
     private javax.swing.JLabel numero;
+    private javax.swing.JButton primeroBoton;
+    private javax.swing.JButton siguienteBoton;
+    private javax.swing.JButton ultimoBoton;
     // End of variables declaration//GEN-END:variables
 }

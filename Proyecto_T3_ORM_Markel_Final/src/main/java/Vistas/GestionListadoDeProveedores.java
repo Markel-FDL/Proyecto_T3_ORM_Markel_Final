@@ -55,15 +55,16 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        datoApellidos = new javax.swing.JTextField();
-        datoDireccion = new javax.swing.JTextField();
-        datonombre = new javax.swing.JTextField();
-        banterior = new javax.swing.JButton();
-        bsiguiente = new javax.swing.JButton();
-        bprimero = new javax.swing.JButton();
-        bultimo = new javax.swing.JButton();
-        numeros = new javax.swing.JLabel();
-        datoCodigo = new javax.swing.JTextField();
+        apellidoProv2 = new javax.swing.JTextField();
+        direccionProv2 = new javax.swing.JTextField();
+        nombreProv2 = new javax.swing.JTextField();
+        anteriorBoton = new javax.swing.JButton();
+        siguienteBoton = new javax.swing.JButton();
+        primeroBoton = new javax.swing.JButton();
+        ultimoBoton = new javax.swing.JButton();
+        posicion = new javax.swing.JLabel();
+        codigoProv2 = new javax.swing.JTextField();
+        eliminarBoton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -176,7 +177,7 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(direccionProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(limpiarBoton)
                     .addComponent(insertarBoton))
@@ -199,51 +200,63 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
 
         jLabel8.setText("Direccion");
 
-        datoApellidos.setEditable(false);
-
-        datoDireccion.setEditable(false);
-
-        datonombre.setEditable(false);
-        datonombre.addActionListener(new java.awt.event.ActionListener() {
+        apellidoProv2.setEditable(false);
+        apellidoProv2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datonombreActionPerformed(evt);
+                apellidoProv2ActionPerformed(evt);
             }
         });
 
-        banterior.setText("<<");
-        banterior.addActionListener(new java.awt.event.ActionListener() {
+        direccionProv2.setEditable(false);
+
+        nombreProv2.setEditable(false);
+        nombreProv2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                banteriorActionPerformed(evt);
+                nombreProv2ActionPerformed(evt);
             }
         });
 
-        bsiguiente.setText(">>");
-        bsiguiente.addActionListener(new java.awt.event.ActionListener() {
+        anteriorBoton.setText("<<");
+        anteriorBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bsiguienteActionPerformed(evt);
+                anteriorBotonActionPerformed(evt);
             }
         });
 
-        bprimero.setText("|<<");
-        bprimero.addActionListener(new java.awt.event.ActionListener() {
+        siguienteBoton.setText(">>");
+        siguienteBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bprimeroActionPerformed(evt);
+                siguienteBotonActionPerformed(evt);
             }
         });
 
-        bultimo.setText(">>|");
-        bultimo.addActionListener(new java.awt.event.ActionListener() {
+        primeroBoton.setText("|<<");
+        primeroBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bultimoActionPerformed(evt);
+                primeroBotonActionPerformed(evt);
             }
         });
 
-        numeros.setText("1/2");
-
-        datoCodigo.setEditable(false);
-        datoCodigo.addActionListener(new java.awt.event.ActionListener() {
+        ultimoBoton.setText(">>|");
+        ultimoBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datoCodigoActionPerformed(evt);
+                ultimoBotonActionPerformed(evt);
+            }
+        });
+
+        posicion.setText("1/2");
+
+        codigoProv2.setEditable(false);
+        codigoProv2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoProv2ActionPerformed(evt);
+            }
+        });
+
+        eliminarBoton2.setText("Eliminar");
+        eliminarBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBoton2ActionPerformed(evt);
             }
         });
 
@@ -259,7 +272,7 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(datoCodigo))
+                                .addComponent(codigoProv2))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -267,23 +280,29 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(datonombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(datoApellidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(datoDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(nombreProv2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(apellidoProv2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(direccionProv2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(anteriorBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(primeroBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(187, 187, 187)
-                        .addComponent(numeros)))
+                        .addComponent(posicion)))
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bprimero)
-                    .addComponent(banterior))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bsiguiente)
-                    .addComponent(bultimo))
-                .addGap(107, 107, 107))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(eliminarBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(siguienteBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ultimoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,30 +310,32 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigoProv2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(datonombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreProv2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(datoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidoProv2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(datoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(direccionProv2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(numeros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(posicion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bprimero)
-                    .addComponent(bultimo))
-                .addGap(18, 18, 18)
+                    .addComponent(primeroBoton)
+                    .addComponent(ultimoBoton))
+                .addGap(2, 2, 2)
+                .addComponent(eliminarBoton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bsiguiente)
-                    .addComponent(banterior))
-                .addGap(32, 32, 32))
+                    .addComponent(anteriorBoton)
+                    .addComponent(siguienteBoton))
+                .addGap(46, 46, 46))
         );
 
         jTabbedPane1.addTab("Listado de Proveedores", jPanel3);
@@ -426,47 +447,73 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
         direccionProv.setText("");
     }
 
-    private void datonombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datonombreActionPerformed
+    private void nombreProv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProv2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_datonombreActionPerformed
+    }//GEN-LAST:event_nombreProv2ActionPerformed
 
-    private void banteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banteriorActionPerformed
+    private void anteriorBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorBotonActionPerformed
         if (contador > 0 ){
             contador--;
             cargarProveedor(contador);
         }
-    }//GEN-LAST:event_banteriorActionPerformed
+    }//GEN-LAST:event_anteriorBotonActionPerformed
 
-    private void bsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsiguienteActionPerformed
+    private void siguienteBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBotonActionPerformed
         if (contador < (listaProveedores.size() - 1) ){
             contador++;
             cargarProveedor(contador);
         }
-    }//GEN-LAST:event_bsiguienteActionPerformed
+    }//GEN-LAST:event_siguienteBotonActionPerformed
 
-    private void bprimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bprimeroActionPerformed
+    private void primeroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroBotonActionPerformed
         contador = 0;
         cargarProveedor(contador);
-    }//GEN-LAST:event_bprimeroActionPerformed
+    }//GEN-LAST:event_primeroBotonActionPerformed
 
-    private void bultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bultimoActionPerformed
+    private void ultimoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoBotonActionPerformed
         contador = listaProveedores.size() - 1;
         cargarProveedor(contador);
-    }//GEN-LAST:event_bultimoActionPerformed
+    }//GEN-LAST:event_ultimoBotonActionPerformed
 
     private void codigoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codigoProvActionPerformed
 
-    private void datoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datoCodigoActionPerformed
+    private void codigoProv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProv2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_datoCodigoActionPerformed
+    }//GEN-LAST:event_codigoProv2ActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        cargarTab();
+        cargarDatos();
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void cargarTab() {
+    private void apellidoProv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoProv2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoProv2ActionPerformed
+
+    private void eliminarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBoton2ActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
+        if (opcion == 0){
+            ProveedoresEntity p = new ProveedoresEntity();
+            p.setCodigo(listaProveedores.get(contador).getCodigo());
+            switch (acciones.eliminarProveedor(p)) {
+                case 0 :
+                    JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
+                    cargarDatos();
+                    break;
+                case 1 :
+                    JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 2 :
+                    JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "<< Se ha cancelado la acccion >>");
+        }
+    }//GEN-LAST:event_eliminarBoton2ActionPerformed
+
+    private void cargarDatos() {
         listaProveedores = acciones.listarProveedores();
         contador = 0;
         cargarProveedor(contador);
@@ -474,11 +521,11 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
 
     private void cargarProveedor(int contador) {
         if (!listaProveedores.isEmpty()) {
-            numeros.setText(contador + 1 + "/" + listaProveedores.size());
-            datoCodigo.setText(listaProveedores.get(contador).getCodigo());
-            datonombre.setText(listaProveedores.get(contador).getNombre());
-            datoApellidos.setText(listaProveedores.get(contador).getApellidos());
-            datoDireccion.setText(listaProveedores.get(contador).getDireccion());
+            posicion.setText(contador + 1 + "/" + listaProveedores.size());
+            codigoProv2.setText(listaProveedores.get(contador).getCodigo());
+            nombreProv2.setText(listaProveedores.get(contador).getNombre());
+            apellidoProv2.setText(listaProveedores.get(contador).getApellidos());
+            direccionProv2.setText(listaProveedores.get(contador).getDireccion());
         }
     }
     /**
@@ -532,18 +579,15 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton anteriorBoton;
     private javax.swing.JTextField apellidoProv;
-    private javax.swing.JButton banterior;
-    private javax.swing.JButton bprimero;
-    private javax.swing.JButton bsiguiente;
-    private javax.swing.JButton bultimo;
+    private javax.swing.JTextField apellidoProv2;
     private javax.swing.JTextField codigoProv;
-    private javax.swing.JTextField datoApellidos;
-    private javax.swing.JTextField datoCodigo;
-    private javax.swing.JTextField datoDireccion;
-    private javax.swing.JTextField datonombre;
+    private javax.swing.JTextField codigoProv2;
     private javax.swing.JTextField direccionProv;
+    private javax.swing.JTextField direccionProv2;
     private javax.swing.JButton eliminarBoton;
+    private javax.swing.JButton eliminarBoton2;
     private javax.swing.JButton insertarBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -559,6 +603,10 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
     private javax.swing.JButton limpiarBoton;
     private javax.swing.JButton modificarBoton;
     private javax.swing.JTextField nombreProv;
-    private javax.swing.JLabel numeros;
+    private javax.swing.JTextField nombreProv2;
+    private javax.swing.JLabel posicion;
+    private javax.swing.JButton primeroBoton;
+    private javax.swing.JButton siguienteBoton;
+    private javax.swing.JButton ultimoBoton;
     // End of variables declaration//GEN-END:variables
 }

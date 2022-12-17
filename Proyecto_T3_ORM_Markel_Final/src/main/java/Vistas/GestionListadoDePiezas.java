@@ -6,6 +6,7 @@ package Vistas;
 
 
 import com.mycompany.PiezasEntity;
+import com.mycompany.ProveedoresEntity;
 import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 
@@ -56,7 +57,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
         siguienteBoton = new javax.swing.JButton();
         primeroBoton = new javax.swing.JButton();
         ultimoBoton = new javax.swing.JButton();
-        numeroPie = new javax.swing.JLabel();
+        posicion = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         datoDescripcion = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
@@ -66,6 +67,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         datosNombrePie = new javax.swing.JTextField();
         datosCodigoPie = new javax.swing.JTextField();
+        eliminarBoton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -192,7 +194,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(limpiarBoton)
                             .addComponent(insertarBoton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(modificarBoton)
                             .addComponent(eliminarBoton))
@@ -233,7 +235,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
             }
         });
 
-        numeroPie.setText("1/2");
+        posicion.setText("1/2");
 
         datoDescripcion.setEditable(false);
         datoDescripcion.setColumns(20);
@@ -265,24 +267,17 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
             }
         });
 
+        eliminarBoton2.setText("Eliminar");
+        eliminarBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBoton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(numeroPie)
-                .addGap(182, 182, 182))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(primeroBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(anteriorBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(siguienteBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ultimoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(116, 116, 116))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,12 +298,33 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane3)
-                                .addContainerGap())))
+                                .addContainerGap())
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(anteriorBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(primeroBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(siguienteBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ultimoBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(datosCodigoPie, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
+                        .addGap(41, 41, 41))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(posicion)
+                        .addGap(182, 182, 182))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(eliminarBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,12 +349,14 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(numeroPie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(posicion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(primeroBoton)
                     .addComponent(ultimoBoton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(eliminarBoton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(siguienteBoton)
                     .addComponent(anteriorBoton))
@@ -488,10 +506,32 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_datosCodigoPieActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        cargarTab();
+        cargarDatos();
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void cargarTab() {
+    private void eliminarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBoton2ActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
+        if (opcion == 0){
+            ProveedoresEntity proveedores = new ProveedoresEntity();
+            proveedores.setCodigo(listaPiezas.get(contador).getCodigo());
+            switch (acciones.eliminarProveedor(proveedores)) {
+                case 0 :
+                    JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
+                    cargarDatos();
+                    break;
+                case 1 :
+                    JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 2 :
+                    JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "<< Se ha cancelado la accion >>");
+        }
+    }//GEN-LAST:event_eliminarBoton2ActionPerformed
+
+    private void cargarDatos() {
         listaPiezas = acciones.listarPiezas();
         contador = 0;
         cargarProveedor(contador);
@@ -499,7 +539,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
 
     private void cargarProveedor(int contador) {
         if (!listaPiezas.isEmpty()) {
-            numeroPie.setText(contador + 1 + "/" + listaPiezas.size());
+            posicion.setText(contador + 1 + "/" + listaPiezas.size());
             datosCodigoPie.setText(listaPiezas.get(contador).getCodigo());
             datosNombrePie.setText(listaPiezas.get(contador).getNombre());
             datoPrecio.setValue(listaPiezas.get(contador).getPrecio());
@@ -590,6 +630,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     private javax.swing.JTextField datosNombrePie;
     private javax.swing.JTextArea descPieza;
     private javax.swing.JButton eliminarBoton;
+    private javax.swing.JButton eliminarBoton2;
     private javax.swing.JButton insertarBoton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -607,7 +648,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     private javax.swing.JButton limpiarBoton;
     private javax.swing.JButton modificarBoton;
     private javax.swing.JTextField nombrePie;
-    private javax.swing.JLabel numeroPie;
+    private javax.swing.JLabel posicion;
     private javax.swing.JSpinner precioPie;
     private javax.swing.JButton primeroBoton;
     private javax.swing.JButton siguienteBoton;
