@@ -5,7 +5,7 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * @author 9fdam05
  */
 public class MostrarPiezaDeProyecto extends javax.swing.JFrame {
-    Operaciones operaciones = new Operaciones();
-    String[] col = new String[]{"Cod Proyecto", "Nombre", "Ciudad", "Nº Piezas", "Cant. suminsitrada", "Nº Proveedores"};
+    Acciones acciones = new Acciones();
+    String[] columna = new String[]{"Cod Proyecto", "Nombre", "Ciudad", "Nº Piezas", "Cant. suminsitrada", "Nº Proveedores"};
 
     /**
      * Creates new form Gpp
@@ -69,10 +69,10 @@ public class MostrarPiezaDeProyecto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ArrayList<Object[]> temp = operaciones.listarTablaPiezaProyecto();
-        if (temp.size() > 0) {
-            DefaultTableModel model = new DefaultTableModel(col, 0);
-            for (Object[] obj : temp) {
+        ArrayList<Object[]> objetos = acciones.listarTablaPiezaProyecto();
+        if (objetos.size() > 0) {
+            DefaultTableModel model = new DefaultTableModel(columna, 0);
+            for (Object[] obj : objetos) {
                 model.addRow(obj);
             }
             jTable1.setModel(model);

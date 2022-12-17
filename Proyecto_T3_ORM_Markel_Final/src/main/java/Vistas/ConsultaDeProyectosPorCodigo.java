@@ -5,10 +5,12 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.ProyectosEntity;
+import com.mycompany.ProyectosEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +27,7 @@ public class ConsultaDeProyectosPorCodigo extends javax.swing.JFrame {
     }
 
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<ProyectosEntity> listaProyectos;
     static String[] codigo;
     /**
@@ -113,31 +115,24 @@ public class ConsultaDeProyectosPorCodigo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboCodigosActionPerformed(ActionEvent evt) {
+    }
+
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCodigoActionPerformed
 
-    private void combocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
-        if (!combocodigo.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
-            ProyectosEntity p = new ProyectosEntity();
-            p = listaProyectos.get(combocodigo.getSelectedIndex());
-            jTextArea1.setText("Nombre: " + p.getNombre() + "\n" +
-                    "\n" +
-                    "Ciudad: " + p.getCiudad() + "\n" );
-        }
-    }//GEN-LAST:event_combocodigoActionPerformed
-
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<ProyectosEntity> temp = operaciones.listarProyectosFiltro("codigo", textoCodigo.getText());
-            if (temp.size() > 0) {
-                listaProyectos = temp;
+            ArrayList<ProyectosEntity> proyectos = acciones.listarProyectosFiltro("codigo", textoCodigo.getText());
+            if (proyectos.size() > 0) {
+                listaProyectos = proyectos;
                 codigo = new String[listaProyectos.size()];
                 for (int i = 0; i < listaProyectos.size(); i++) {
                     codigo[i] = listaProyectos.get(i).getCodigo();
                 }
                 DefaultComboBoxModel modelo = new DefaultComboBoxModel(codigo);
-                combocodigo.setModel(modelo);
+                comboCodigos.setModel(modelo);
                 textoCodigo.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>" , "No hay datos", JOptionPane.ERROR_MESSAGE);

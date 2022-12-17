@@ -242,93 +242,93 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GestionProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GestionProveedoresMouseClicked
-        GestionListadoDeProveedores gestionProveedores = new GestionListadoDeProveedores();
-        gestionProveedores.setLocationRelativeTo(null);
-        gestionProveedores.setVisible(true);
+        GestionListadoDeProveedores gestionListadoDeProveedores = new GestionListadoDeProveedores();
+        gestionListadoDeProveedores.setLocationRelativeTo(null);
+        gestionListadoDeProveedores.setVisible(true);
     }//GEN-LAST:event_GestionProveedoresMouseClicked
 
     private void codigoProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoProvMouseClicked
-        ConsultaDeProveedoresPorCodigo consultaProveedoresCodigo = new ConsultaDeProveedoresPorCodigo();
-        consultaProveedoresCodigo.setLocationRelativeTo(null);
-        consultaProveedoresCodigo.setVisible(true);
+        ConsultaDeProveedoresPorCodigo consultaDeProveedoresPorCodigo = new ConsultaDeProveedoresPorCodigo();
+        consultaDeProveedoresPorCodigo.setLocationRelativeTo(null);
+        consultaDeProveedoresPorCodigo.setVisible(true);
     }//GEN-LAST:event_codigoProvMouseClicked
 
     private void nombreProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreProvMouseClicked
-        ConsultaDeProveedoresPorNombre consultaProveedoresNombre = new ConsultaDeProveedoresPorNombre();
-        consultaProveedoresNombre.setLocationRelativeTo(null);
-        consultaProveedoresNombre.setVisible(true);
+        ConsultaDeProveedoresPorNombre consultaDeProveedoresPorNombre = new ConsultaDeProveedoresPorNombre();
+        consultaDeProveedoresPorNombre.setLocationRelativeTo(null);
+        consultaDeProveedoresPorNombre.setVisible(true);
     }//GEN-LAST:event_nombreProvMouseClicked
 
     private void direccionProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_direccionProvMouseClicked
-        ConsultaDeProveedoresPorDireccion consultaProveedoresDireccion = new ConsultaDeProveedoresPorDireccion();
-        consultaProveedoresDireccion.setLocationRelativeTo(null);
-        consultaProveedoresDireccion.setVisible(true);
+        ConsultaDeProveedoresPorDireccion consultaDeProveedoresPorDireccion = new ConsultaDeProveedoresPorDireccion();
+        consultaDeProveedoresPorDireccion.setLocationRelativeTo(null);
+        consultaDeProveedoresPorDireccion.setVisible(true);
     }//GEN-LAST:event_direccionProvMouseClicked
 
     private void gestionPiezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionPiezasMouseClicked
-        GestionListadoDePiezas gestionPiezas = new GestionListadoDePiezas();
-        gestionPiezas.setLocationRelativeTo(null);
-        gestionPiezas.setVisible(true);
+        GestionListadoDePiezas gestionListadoDePiezas = new GestionListadoDePiezas();
+        gestionListadoDePiezas.setLocationRelativeTo(null);
+        gestionListadoDePiezas.setVisible(true);
     }//GEN-LAST:event_gestionPiezasMouseClicked
 
     private void codigoPieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoPieMouseClicked
-        ConsultaDePiezasPorCodigo consultapiezascodigo = new ConsultaDePiezasPorCodigo();
-        consultapiezascodigo.setLocationRelativeTo(null);
-        consultapiezascodigo.setVisible(true);
+        ConsultaDePiezasPorCodigo consultaDePiezasPorCodigo = new ConsultaDePiezasPorCodigo();
+        consultaDePiezasPorCodigo.setLocationRelativeTo(null);
+        consultaDePiezasPorCodigo.setVisible(true);
     }//GEN-LAST:event_codigoPieMouseClicked
 
     private void nombrePieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombrePieMouseClicked
-        ConsultaDePiezasPorNombre consultaPiezasNombre = new ConsultaDePiezasPorNombre();
-        consultaPiezasNombre.setLocationRelativeTo(null);
-        consultaPiezasNombre.setVisible(true);
+        ConsultaDePiezasPorNombre consultaDePiezasPorNombre = new ConsultaDePiezasPorNombre();
+        consultaDePiezasPorNombre.setLocationRelativeTo(null);
+        consultaDePiezasPorNombre.setVisible(true);
     }//GEN-LAST:event_nombrePieMouseClicked
 
     private void gestionProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionProyectosMouseClicked
-        GestionListadoDeProyectos gestionproyectos = new GestionListadoDeProyectos();
-        gestionproyectos.setLocationRelativeTo(null);
-        gestionproyectos.setVisible(true);
+        GestionListadoDeProyectos gestionListadoDeProyectos = new GestionListadoDeProyectos();
+        gestionListadoDeProyectos.setLocationRelativeTo(null);
+        gestionListadoDeProyectos.setVisible(true);
     }//GEN-LAST:event_gestionProyectosMouseClicked
 
     private void codigoProyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoProyMouseClicked
-        ConsultaDeProyectosPorCodigo consultaProyectosCodigo = new ConsultaDeProyectosPorCodigo();
-        consultaProyectosCodigo.setLocationRelativeTo(null);
-        consultaProyectosCodigo.setVisible(true);
+        ConsultaDeProyectosPorCodigo consultaDeProyectosPorCodigo = new ConsultaDeProyectosPorCodigo();
+        consultaDeProyectosPorCodigo.setLocationRelativeTo(null);
+        consultaDeProyectosPorCodigo.setVisible(true);
     }//GEN-LAST:event_codigoProyMouseClicked
 
     private void nombreProyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreProyMouseClicked
-        ConsultaDeProyectosPorNombre consultaProyectosNombre = new ConsultaDeProyectosPorNombre();
-        consultaProyectosNombre.setLocationRelativeTo(null);
-        consultaProyectosNombre.setVisible(true);
+        ConsultaDeProyectosPorNombre consultaDeProyectosPorNombre = new ConsultaDeProyectosPorNombre();
+        consultaDeProyectosPorNombre.setLocationRelativeTo(null);
+        consultaDeProyectosPorNombre.setVisible(true);
     }//GEN-LAST:event_nombreProyMouseClicked
 
     private void ciudadProyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ciudadProyMouseClicked
-        ConsultaDeProyectosPorCiudad consultaProyectosCiudad = new ConsultaDeProyectosPorCiudad();
-        consultaProyectosCiudad.setLocationRelativeTo(null);
-        consultaProyectosCiudad.setVisible(true);
+        ConsultaDeProyectosPorCiudad consultaDeProyectosPorCiudad = new ConsultaDeProyectosPorCiudad();
+        consultaDeProyectosPorCiudad.setLocationRelativeTo(null);
+        consultaDeProyectosPorCiudad.setVisible(true);
     }//GEN-LAST:event_ciudadProyMouseClicked
 
     private void Piezas_proveedores_proyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Piezas_proveedores_proyectosMouseClicked
-        GestionPiezasProveedoresProyectos gestionPPP = new GestionPiezasProveedoresProyectos();
-        gestionPPP.setLocationRelativeTo(null);
-        gestionPPP.setVisible(true);
+        GestionPiezasProveedoresProyectos gestionPiezasProveedoresProyectos = new GestionPiezasProveedoresProyectos();
+        gestionPiezasProveedoresProyectos.setLocationRelativeTo(null);
+        gestionPiezasProveedoresProyectos.setVisible(true);
     }//GEN-LAST:event_Piezas_proveedores_proyectosMouseClicked
 
     private void Suministros_por_proveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Suministros_por_proveedorMouseClicked
-        SuministroDeProveedores suministrosProveedor = new SuministroDeProveedores();
-        suministrosProveedor.setLocationRelativeTo(null);
-        suministrosProveedor.setVisible(true);
+        SuministroDeProveedores suministroDeProveedores = new SuministroDeProveedores();
+        suministroDeProveedores.setLocationRelativeTo(null);
+        suministroDeProveedores.setVisible(true);
     }//GEN-LAST:event_Suministros_por_proveedorMouseClicked
 
     private void Suministros_por_piezasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Suministros_por_piezasMouseClicked
-        SuministroDePiezas suministrosPiezas = new SuministroDePiezas();
-        suministrosPiezas.setLocationRelativeTo(null);
-        suministrosPiezas.setVisible(true);
+        SuministroDePiezas suministroDePiezas = new SuministroDePiezas();
+        suministroDePiezas.setLocationRelativeTo(null);
+        suministroDePiezas.setVisible(true);
     }//GEN-LAST:event_Suministros_por_piezasMouseClicked
 
     private void EstadísticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstadísticasMouseClicked
-        SuministroDePiezas suministrosPiezas = new SuministroDePiezas();
-        suministrosPiezas.setLocationRelativeTo(null);
-        suministrosPiezas.setVisible(true);
+        SuministroDePiezas suministroDePiezas = new SuministroDePiezas();
+        suministroDePiezas.setLocationRelativeTo(null);
+        suministroDePiezas.setVisible(true);
     }//GEN-LAST:event_EstadísticasMouseClicked
 
     private void AyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaMouseClicked

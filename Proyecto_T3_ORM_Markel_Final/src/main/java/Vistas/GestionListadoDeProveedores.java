@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.ProveedoresEntity;
+import com.mycompany.ProveedoresEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author 9fdam05
  */
 public class GestionListadoDeProveedores extends javax.swing.JFrame {
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
 
     static ArrayList<ProveedoresEntity> listaProveedores;
 
@@ -342,18 +342,21 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
 
     private void insertarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarBotonActionPerformed
         if (!codigoProv.getText().equals("") && !nombreProv.getText().equals("") && !apellidoProv.getText().equals("") && !direccionProv.getText().equals("")) {
-            ProveedoresEntity p = new ProveedoresEntity();
-            p.setCodigo(codigoProv.getText().toUpperCase());
-            p.setNombre(nombreProv.getText());
-            p.setApellidos(apellidoProv.getText());
-            p.setDireccion(direccionProv.getText());
-            switch (operaciones.anadirProveedor(p)) {
+            ProveedoresEntity proveedores = new ProveedoresEntity();
+            proveedores.setCodigo(codigoProv.getText().toUpperCase());
+            proveedores.setNombre(nombreProv.getText());
+            proveedores.setApellidos(apellidoProv.getText());
+            proveedores.setDireccion(direccionProv.getText());
+            switch (acciones.anadirProveedor(proveedores)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Proveedor correctamente insertado >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< Error al insertar proveedor >>", "Error al insertar", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< El codigo ya existe >>", "Codigo existente", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "<< Faltan campos por rellenar para realizar la insercion >>", "Parametros vacion", JOptionPane.ERROR_MESSAGE);
@@ -362,19 +365,22 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarBotonActionPerformed
 
     private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
-        ProveedoresEntity p = new ProveedoresEntity();
+        ProveedoresEntity proveedores = new ProveedoresEntity();
         if (!codigoProv.getText().equals("")) {
-            p.setCodigo(codigoProv.getText());
-            p.setNombre(nombreProv.getText());
-            p.setApellidos(apellidoProv.getText());
-            p.setDireccion(direccionProv.getText());
-            switch (operaciones.actualizarProveedor(p)) {
+            proveedores.setCodigo(codigoProv.getText());
+            proveedores.setNombre(nombreProv.getText());
+            proveedores.setApellidos(apellidoProv.getText());
+            proveedores.setDireccion(direccionProv.getText());
+            switch (acciones.actualizarProveedor(proveedores)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Proveedor actualizado correctamente >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< No se ha encontrado proveedor >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< Error al actualizar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "<< Codigo no introducido para modificar proveedor >>", "Codigo vacio", JOptionPane.WARNING_MESSAGE);
@@ -388,18 +394,21 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
 
 
     private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
-        ProveedoresEntity p = new ProveedoresEntity();
+        ProveedoresEntity proveedores = new ProveedoresEntity();
         if (!codigoProv.getText().equals("")) {
             int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
             if (opcion == 0) {
-                p.setCodigo(codigoProv.getText());
-                switch (operaciones.eliminarProveedor(p)) {
+                proveedores.setCodigo(codigoProv.getText());
+                switch (acciones.eliminarProveedor(proveedores)) {
                     case 0 :
                         JOptionPane.showMessageDialog(this, "<< Proveedor eliminado correctamente");
+                        break;
                     case 1 :
                         JOptionPane.showMessageDialog(this, "<< No se ha encontrado proveedor >>", "Codigo erroneo", JOptionPane.ERROR_MESSAGE);
+                        break;
                     case 2 :
                         JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                        break;
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "<< Se ha cancelado la accion >>", "Accion cancelada", JOptionPane.WARNING_MESSAGE);
@@ -458,7 +467,7 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void cargarTab() {
-        listaProveedores = operaciones.listarProveedores();
+        listaProveedores = acciones.listarProveedores();
         contador = 0;
         cargarProveedor(contador);
     }

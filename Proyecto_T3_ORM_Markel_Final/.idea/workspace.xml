@@ -46,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/mafe1/Downloads/mysql-connector-java-8.0.23.jar",
+    "last_opened_file_path": "C:/Users/mafe1/Desktop/Proyecto-AD-Final2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +63,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mafe1\Desktop\Proyecto_T3_ORM_Markel_Final\Proyecto_T3_ORM_Markel_Final\src\main\resources" />
+    </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.mycompany" />
     </key>
@@ -76,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671190573976</updated>
       <workItem from="1671190575538" duration="3207000" />
+      <workItem from="1671271240680" duration="8994000" />
     </task>
     <servers />
   </component>

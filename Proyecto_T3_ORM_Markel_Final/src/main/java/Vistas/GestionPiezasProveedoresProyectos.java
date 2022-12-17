@@ -6,7 +6,11 @@ package Vistas;
 
 //import com.mycompany.proyecto.ad.final2.entity.*;
 
-import com.mycompany.proyectos_t3_orm_markel_final.*;
+import com.mycompany.GestionEntity;
+import com.mycompany.PiezasEntity;
+import com.mycompany.ProveedoresEntity;
+import com.mycompany.ProyectosEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ import java.util.ArrayList;
  */
 public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<ProveedoresEntity> listaProveedores;
     static ArrayList<ProyectosEntity> listaProyectos;
     static ArrayList<PiezasEntity> listaPiezas;
@@ -320,7 +324,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cargarDatos() {
-        listaProyectos = operaciones.listarProyectos();
+        listaProyectos = acciones.listarProyectos();
         String[] codigosOperacines = new String[listaProyectos.size()];
         for (int i = 0; i < listaProyectos.size(); i++) {
             codigosOperacines[i] = listaProyectos.get(i).getCodigo();
@@ -328,7 +332,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
         DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(codigosOperacines);
         comboProyecto.setModel(defaultComboBoxModel);
 
-        listaProveedores = operaciones.listarProveedores();
+        listaProveedores = acciones.listarProveedores();
         String[] codigosProveedores = new String[listaProveedores.size()];
         for (int i = 0; i < listaProveedores.size(); i++) {
             codigosProveedores[i] = listaProveedores.get(i).getCodigo();
@@ -336,7 +340,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
         DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel(codigosProveedores);
         comboProveedor.setModel(defaultComboBoxModel2);
 
-        listaPiezas = operaciones.listarPiezas();
+        listaPiezas = acciones.listarPiezas();
         String[] codigosPiezas = new String[listaPiezas.size()];
         for (int i = 0; i < listaPiezas.size(); i++) {
             codigosPiezas[i] = listaPiezas.get(i).getCodigo();
@@ -367,14 +371,14 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_comboProyectoActionPerformed
 
     private void anadirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirBotonActionPerformed
-        int cant;
+        int cantidadd;
         try {
-            cant = Integer.parseInt(cantidad.getText());
+            cantidadd = Integer.parseInt(cantidad.getText());
         } catch (NumberFormatException e) {
-            cant = Integer.MIN_VALUE;
+            cantidadd = Integer.MIN_VALUE;
         }
-        if (cant != Integer.MIN_VALUE) {
-            if (cant > 0) {
+        if (cantidadd != Integer.MIN_VALUE) {
+            if (cantidadd > 0) {
                 String[] codigos = new String[3];
                 codigos[0] = comboPieza.getSelectedItem().toString();
                 codigos[1] = comboProyecto.getSelectedItem().toString();
@@ -383,7 +387,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
                 g.setPiezasCodigo(codigos[0]);
                 g.setProyectosCodigo(codigos[1]);
                 g.setProveedoresCodigo(codigos[2]);
-                switch (operaciones.anadirGestion(g)) {
+                switch (acciones.anadirGestion(g)) {
                     case 0 :
                         JOptionPane.showMessageDialog(this, "<< dato de gestion insertado correctamente >>");
                     case 1 :
@@ -412,7 +416,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
                 codigos[0] = comboPieza.getSelectedItem().toString();
                 codigos[1] = comboProyecto.getSelectedItem().toString();
                 codigos[2] = comboProveedor.getSelectedItem().toString();
-                switch (operaciones.actualizarGestion(codigos, cant)) {
+                switch (acciones.actualizarGestion(codigos, cant)) {
                     case 0 :
                         JOptionPane.showMessageDialog(this, "<< Eliminado el dato correctamente >>");
                     case 1 :
@@ -433,7 +437,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
         codigos[0] = comboPieza.getSelectedItem().toString();
         codigos[1] = comboProyecto.getSelectedItem().toString();
         codigos[2] = comboProveedor.getSelectedItem().toString();
-        switch (operaciones.eliminarGestion(codigos)) {
+        switch (acciones.eliminarGestion(codigos)) {
             case 0 :
                 JOptionPane.showMessageDialog(this, "<< Eliminado el dato correctamente >>");
             case 1 :

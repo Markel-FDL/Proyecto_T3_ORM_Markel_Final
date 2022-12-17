@@ -10,13 +10,13 @@
     <property name="connection.username">root</property>
     <property name="connection.password">root</property>
     <mapping class="com.mycompany.GestionEntity"/>
-      <mapping resource="com/mycompany/GestionEntity.hbm.xml"/>
-    <mapping resource="com/mycompany/PiezasEntity.hbm.xml"/>
+      <mapping resource="GestionEntity.hbm.xml"/>
+    <mapping resource="PiezasEntity.hbm.xml"/>
     <mapping class="com.mycompany.PiezasEntity"/>
     <mapping class="com.mycompany.ProveedoresEntity"/>
-    <mapping resource="com/mycompany/ProveedoresEntity.hbm.xml"/>
+    <mapping resource="ProveedoresEntity.hbm.xml"/>
     <mapping class="com.mycompany.ProyectosEntity"/>
-    <mapping resource="com/mycompany/ProyectosEntity.hbm.xml"/>
+    <mapping resource="ProyectosEntity.hbm.xml"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

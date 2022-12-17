@@ -5,8 +5,9 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.PiezasEntity;
+import com.mycompany.PiezasEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author 9fdam05
  */
 public class GestionListadoDePiezas extends javax.swing.JFrame {
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<PiezasEntity> listaPiezas;
     static int contador;
 
@@ -368,18 +369,21 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     private void insertarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarBotonActionPerformed
         double precio = (double) precioPie.getValue();
         if (!codigoPie.getText().equals("") && !nombrePie.getText().equals("") && !descPieza.getText().equals("") && (precio > 0.0)) {
-            PiezasEntity p = new PiezasEntity();
-            p.setCodigo(codigoPie.getText().toUpperCase());
-            p.setNombre(nombrePie.getText());
-            p.setDescripcion(descPieza.getText());
-            p.setPrecio(precio);
-            switch (operaciones.anadirPieza(p)) {
+            PiezasEntity piezas = new PiezasEntity();
+            piezas.setCodigo(codigoPie.getText().toUpperCase());
+            piezas.setNombre(nombrePie.getText());
+            piezas.setDescripcion(descPieza.getText());
+            piezas.setPrecio(precio);
+            switch (acciones.anadirPieza(piezas)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Se ha insertado correctamente >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< Error al insertar pieza >>", "Error de insercion", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< Ya existe una pieza con ese codigo >>", "Codigo existente", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "<< Hay campos vacios >>", "Parametros vacios", JOptionPane.ERROR_MESSAGE);
@@ -388,19 +392,22 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarBotonActionPerformed
 
     private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
-        PiezasEntity p = new PiezasEntity();
+        PiezasEntity piezas = new PiezasEntity();
         if (!codigoPie.getText().equals("")) {
-            p.setCodigo(codigoPie.getText());
-            p.setNombre(nombrePie.getText());
-            p.setPrecio((Double) precioPie.getValue());
-            p.setDescripcion(descPieza.getText());
-            switch (operaciones.actualizarPieza(p)) {
+            piezas.setCodigo(codigoPie.getText());
+            piezas.setNombre(nombrePie.getText());
+            piezas.setPrecio((Double) precioPie.getValue());
+            piezas.setDescripcion(descPieza.getText());
+            switch (acciones.actualizarPieza(piezas)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Se ha actualizado correctamente >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< Error al actualizar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
 
         } else {
@@ -414,18 +421,21 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarBotonActionPerformed
 
     private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
-        PiezasEntity p = new PiezasEntity();
+        PiezasEntity piezas = new PiezasEntity();
         if (!codigoPie.getText().equals("")) {
             int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Accion borrado", JOptionPane.YES_NO_OPTION);
             if (opcion == 0) {
-                p.setCodigo(codigoPie.getText());
-                switch (operaciones.eliminarPieza(p)) {
+                piezas.setCodigo(codigoPie.getText());
+                switch (acciones.eliminarPieza(piezas)) {
                     case 0 :
                         JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
+                        break;
                     case 1 :
                         JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                        break;
                     case 2 :
                         JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                        break;
                 }
 
             } else {
@@ -482,7 +492,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void cargarTab() {
-        listaPiezas = operaciones.listarPiezas();
+        listaPiezas = acciones.listarPiezas();
         contador = 0;
         cargarProveedor(contador);
     }

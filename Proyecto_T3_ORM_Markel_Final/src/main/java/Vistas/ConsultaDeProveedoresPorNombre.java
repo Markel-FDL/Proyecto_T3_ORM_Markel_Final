@@ -5,8 +5,9 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.ProveedoresEntity;
+import com.mycompany.ProveedoresEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  */
 public class ConsultaDeProveedoresPorNombre extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<ProveedoresEntity> listaProveedores;
     static final String[] columna = new String[]{"Codigo", "Nombre", "Apellidos", "Direccion"};
 
@@ -101,9 +102,9 @@ public class ConsultaDeProveedoresPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoBusqueda.getText().trim().equals("")) {
-            ArrayList<ProveedoresEntity> temp = operaciones.listarProveedorFiltro("nombre", textoBusqueda.getText());
-            if (temp.size() > 0) {
-                listaProveedores = temp;
+            ArrayList<ProveedoresEntity> proveedores = acciones.listarProveedorFiltro("nombre", textoBusqueda.getText());
+            if (proveedores.size() > 0) {
+                listaProveedores = proveedores;
 
                 DefaultTableModel model = new DefaultTableModel(columna,0);
                 for (ProveedoresEntity lproveedor : listaProveedores) {

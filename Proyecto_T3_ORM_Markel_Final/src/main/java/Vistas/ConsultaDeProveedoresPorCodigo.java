@@ -5,10 +5,12 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.ProveedoresEntity;
+import com.mycompany.ProveedoresEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +19,7 @@ import java.util.ArrayList;
  */
 public class ConsultaDeProveedoresPorCodigo extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<ProveedoresEntity> listaProveedores;
     static String[] codigo;
 
@@ -113,14 +115,17 @@ public class ConsultaDeProveedoresPorCodigo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboCodigosActionPerformed(ActionEvent evt) {
+    }
+
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCodigoActionPerformed
 
     private void combocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
-        if (!combocodigo.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
+        if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
             ProveedoresEntity p = new ProveedoresEntity();
-            p = listaProveedores.get(combocodigo.getSelectedIndex());
+            p = listaProveedores.get(comboCodigos.getSelectedIndex());
             jTextArea1.setText("Nombre: " + p.getNombre() + "\n" +
                     "\n" +
                     "Apellidos: " + p.getApellidos() + "\n" +
@@ -132,15 +137,15 @@ public class ConsultaDeProveedoresPorCodigo extends javax.swing.JFrame {
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
 
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<ProveedoresEntity> temp = operaciones.listarProveedorFiltro("codigo", textoCodigo.getText());
-            if (temp.size() > 0) {
-                listaProveedores = temp;
+            ArrayList<ProveedoresEntity> proveedores = acciones.listarProveedorFiltro("codigo", textoCodigo.getText());
+            if (proveedores.size() > 0) {
+                listaProveedores = proveedores;
                 codigo = new String[listaProveedores.size()];
                 for (int i = 0; i < listaProveedores.size(); i++) {
                     codigo[i] = listaProveedores.get(i).getCodigo();
                 }
                 DefaultComboBoxModel modelo = new DefaultComboBoxModel(codigo);
-                combocodigo.setModel(modelo);
+                comboCodigos.setModel(modelo);
                 textoCodigo.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>" , "No hay datos", JOptionPane.ERROR_MESSAGE);

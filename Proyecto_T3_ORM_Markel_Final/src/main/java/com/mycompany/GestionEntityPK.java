@@ -10,15 +10,15 @@ import java.util.Objects;
 public class GestionEntityPK implements Serializable {
     @Column(name = "proyectos_codigo", nullable = false, length = 6)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String proyectosCodigo;
     @Column(name = "proveedores_codigo", nullable = false, length = 6)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String proveedoresCodigo;
     @Column(name = "piezas_codigo", nullable = false, length = 6)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String piezasCodigo;
 
     public String getProyectosCodigo() {

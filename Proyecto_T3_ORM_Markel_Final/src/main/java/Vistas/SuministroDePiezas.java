@@ -5,7 +5,7 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class SuministroDePiezas extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<Object[]> listaPiezas;
 
     /**
@@ -150,13 +150,13 @@ public class SuministroDePiezas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPieActionPerformed
-        Object[] obj = listaPiezas.get(jComboBoxPie.getSelectedIndex());
-        nombrePie.setText(obj[1].toString());
-        precioPie.setText(obj[2].toString());
-        descripcion.setText(obj[3].toString());
-        totalPie.setText(obj[4].toString());
-        numpiezasPie.setText(obj[5].toString());
-        numproveedorProv.setText(obj[6].toString());
+        Object[] piezaObjeto = listaPiezas.get(jComboBoxPie.getSelectedIndex());
+        nombrePie.setText(piezaObjeto[1].toString());
+        precioPie.setText(piezaObjeto[2].toString());
+        descripcion.setText(piezaObjeto[3].toString());
+        totalPie.setText(piezaObjeto[4].toString());
+        numpiezasPie.setText(piezaObjeto[5].toString());
+        numproveedorProv.setText(piezaObjeto[6].toString());
     }//GEN-LAST:event_jComboBoxPieActionPerformed
 
     private void numpiezasPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numpiezasPieActionPerformed
@@ -164,7 +164,7 @@ public class SuministroDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_numpiezasPieActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        listaPiezas = operaciones.listarDatosSuministrosPiezas();
+        listaPiezas = acciones.listarDatosSuministrosPiezas();
         String[] codigos = new String[listaPiezas.size()];
 
         for (int i = 0; i < listaPiezas.size(); i++) {

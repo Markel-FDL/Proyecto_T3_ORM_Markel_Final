@@ -5,7 +5,7 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Estadisticas extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<Object[]> datos;
 
     /**
@@ -199,9 +199,9 @@ public class Estadisticas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton1ActionPerformed
-        MostrarPiezaDeProyecto tablaPiezaProyecto = new MostrarPiezaDeProyecto();
-        tablaPiezaProyecto.setLocationRelativeTo(null);
-        tablaPiezaProyecto.setVisible(true);
+        MostrarPiezaDeProyecto mostrarPiezaDeProyecto = new MostrarPiezaDeProyecto();
+        mostrarPiezaDeProyecto.setLocationRelativeTo(null);
+        mostrarPiezaDeProyecto.setVisible(true);
     }//GEN-LAST:event_Boton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -209,13 +209,13 @@ public class Estadisticas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MostrarPiezaDeProveedor tablaPiezaProveedor = new MostrarPiezaDeProveedor();
-        tablaPiezaProveedor.setLocationRelativeTo(null);
-        tablaPiezaProveedor.setVisible(true);
+        MostrarPiezaDeProveedor mostrarPiezaDeProveedor = new MostrarPiezaDeProveedor();
+        mostrarPiezaDeProveedor.setLocationRelativeTo(null);
+        mostrarPiezaDeProveedor.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cargarDatos() {
-        datos = operaciones.listarDatosEstadisticas();
+        datos = acciones.listarDatosEstadisticas();
         t0.setText(datos.get(0)[0].toString());
         t1.setText(datos.get(0)[1].toString());
         t2.setText(datos.get(1)[0].toString());

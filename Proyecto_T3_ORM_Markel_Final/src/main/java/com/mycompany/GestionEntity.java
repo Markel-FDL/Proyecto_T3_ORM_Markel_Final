@@ -6,15 +6,15 @@ import javax.persistence.*;
 @Table(name = "gestion", schema = "proyecto_t3", catalog = "")
 @IdClass(GestionEntityPK.class)
 public class GestionEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "proyectos_codigo", nullable = false, length = 6)
     private String proyectosCodigo;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "proveedores_codigo", nullable = false, length = 6)
     private String proveedoresCodigo;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "piezas_codigo", nullable = false, length = 6)
     private String piezasCodigo;

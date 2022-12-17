@@ -5,9 +5,10 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class SuministroDeProveedores extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<Object[]> listaProv;
 
     /**
@@ -73,6 +74,7 @@ public class SuministroDeProveedores extends javax.swing.JFrame {
         direccionProv.setEditable(false);
         direccionProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreProvActionPerformed(evt);
                 direccionProvActionPerformed(evt);
             }
         });
@@ -142,21 +144,24 @@ public class SuministroDeProveedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void direccionProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionProvActionPerformed
+    private void direccionProvActionPerformed(ActionEvent evt) {
+    }
+
+/*    private void direccionProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionProvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_direccionProvActionPerformed
+    }//GEN-LAST:event_direccionProvActionPerformed*/
 
     private void jComboBoxProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProvActionPerformed
-        Object[] obj = listaProv.get(jComboBoxProv.getSelectedIndex());
-        nombreProv.setText(obj[1].toString());
-        apellidoProv.setText(obj[2].toString());
-        direccionProv.setText(obj[3].toString());
-        numpiezasProv.setText(obj[4].toString());
-        numProv.setText(obj[5].toString());
+        Object[] proveedorObjeto = listaProv.get(jComboBoxProv.getSelectedIndex());
+        nombreProv.setText(proveedorObjeto[1].toString());
+        apellidoProv.setText(proveedorObjeto[2].toString());
+        direccionProv.setText(proveedorObjeto[3].toString());
+        numpiezasProv.setText(proveedorObjeto[4].toString());
+        numProv.setText(proveedorObjeto[5].toString());
     }//GEN-LAST:event_jComboBoxProvActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        listaProv = operaciones.listarDatosSuministrosProveedor();
+        listaProv = acciones.listarDatosSuministrosProveedor();
         String[] codigos = new String[listaProv.size()];
 
         for (int i = 0; i < listaProv.size(); i++) {

@@ -4,10 +4,12 @@
  */
 package Vistas;
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.PiezasEntity;
+import com.mycompany.PiezasEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<PiezasEntity> listaPiezas;
 
     static String[] codigo;
@@ -110,14 +112,17 @@ public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboCodigosActionPerformed(ActionEvent evt) {
+    }
+
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCodigoActionPerformed
 
     private void combocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
-        if (!combocodigo.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
+        if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
             PiezasEntity p = new PiezasEntity();
-            p = listaPiezas.get(combocodigo.getSelectedIndex());
+            p = listaPiezas.get(comboCodigos.getSelectedIndex());
             jTextArea1.setText("Nombre: " + p.getNombre() + "\n" +
                     "\n" +
                     "Precio: " + p.getPrecio() + "\n" +
@@ -128,7 +133,7 @@ public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<PiezasEntity> temp = operaciones.listarPiezasFiltro("codigo", textoCodigo.getText());
+            ArrayList<PiezasEntity> temp = acciones.listarPiezasFiltro("codigo", textoCodigo.getText());
             if (temp.size() > 0) {
                 listaPiezas = temp;
                 codigo = new String[listaPiezas.size()];
@@ -136,7 +141,7 @@ public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
                     codigo[i] = listaPiezas.get(i).getCodigo();
                 }
                 DefaultComboBoxModel modelo = new DefaultComboBoxModel(codigo);
-                combocodigo.setModel(modelo);
+                comboCodigos.setModel(modelo);
                 textoCodigo.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "<< No se ha encontrado nada >>", "No hay datos", JOptionPane.ERROR_MESSAGE);

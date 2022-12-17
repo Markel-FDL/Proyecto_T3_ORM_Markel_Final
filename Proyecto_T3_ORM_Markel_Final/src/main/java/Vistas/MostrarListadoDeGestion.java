@@ -4,9 +4,11 @@
  */
 package Vistas;
 
-import com.mycompany.proyectos_t3_orm_markel_final.GestionEntity;
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
+import com.mycompany.GestionEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
+
+import javax.accessibility.Accessible;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
@@ -15,8 +17,8 @@ import java.util.ArrayList;
  * @author 9fdam05
  */
 public class MostrarListadoDeGestion extends javax.swing.JFrame {
-    Operaciones operaciones = new Operaciones();
-    String[] col = new String[]{"Cod Pieza", "Cod Proyecto", "Cod Proveedor", "Cantidad"};
+    Acciones acciones = new Acciones();
+    String[] columna = new String[]{"Cod Pieza", "Cod Proyecto", "Cod Proveedor", "Cantidad"};
 
     /**
      * Creates new form Gpp
@@ -70,10 +72,10 @@ public class MostrarListadoDeGestion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ArrayList<GestionEntity> temp = operaciones.listarGestion();
-        if (temp.size() > 0) {
-            DefaultTableModel model = new DefaultTableModel(col, 0);
-            for (GestionEntity gest : temp) {
+        ArrayList<GestionEntity> gestion = acciones.listarGestion();
+        if (gestion.size() > 0) {
+            DefaultTableModel model = new DefaultTableModel(columna, 0);
+            for (GestionEntity gest : gestion) {
                 String[] datos = new String[] {gest.getPiezasCodigo(),gest.getProyectosCodigo(), gest.getProveedoresCodigo(), String.valueOf(gest.getCantidad())};
                 model.addRow(datos);
             }

@@ -5,8 +5,9 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.PiezasEntity;
+import com.mycompany.PiezasEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,9 +19,9 @@ import java.util.ArrayList;
  */
 public class ConsultaDePiezasPorNombre extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<PiezasEntity> listaPiezas;
-    static final String[] col = new String[]{"Codigo", "Nombre", "Precio", "Descripcion"};
+    static final String[] columna = new String[]{"Codigo", "Nombre", "Precio", "Descripcion"};
 
     /**
      * Creates new form ConsultaProveedoresNombre
@@ -101,11 +102,11 @@ public class ConsultaDePiezasPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoBusqueda.getText().trim().equals("")) {
-            ArrayList<PiezasEntity> temp = operaciones.listarPiezasFiltro("nombre", textoBusqueda.getText());
-            if (temp.size() > 0) {
-                listaPiezas = temp;
+            ArrayList<PiezasEntity> piezas = acciones.listarPiezasFiltro("nombre", textoBusqueda.getText());
+            if (piezas.size() > 0) {
+                listaPiezas = piezas;
 
-                DefaultTableModel model = new DefaultTableModel(col,0);
+                DefaultTableModel model = new DefaultTableModel(columna,0);
                 for (PiezasEntity lpieza : listaPiezas) {
                     String[] datos = new String[]{lpieza.getCodigo(), lpieza.getNombre(), String.valueOf(lpieza.getPrecio()), lpieza.getDescripcion()};
                     model.addRow(datos);

@@ -5,6 +5,9 @@
 package Vistas;
 
 
+import com.mycompany.ProyectosEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ConsultaDeProyectosPorNombre extends javax.swing.JFrame {
 
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
     static ArrayList<ProyectosEntity> listaProyectos;
     static final String[] columna = new String[]{"Codigo", "Nombre", "Ciudad"};
     /**
@@ -103,7 +106,7 @@ public class ConsultaDeProyectosPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!Busqueda.getText().trim().equals("")) {
-            ArrayList<ProyectosEntity> temp = operaciones.listarProyectosFiltro("nombre", Busqueda.getText());
+            ArrayList<ProyectosEntity> temp = acciones.listarProyectosFiltro("nombre", Busqueda.getText());
             if (temp.size() > 0) {
                 listaProyectos = temp;
 

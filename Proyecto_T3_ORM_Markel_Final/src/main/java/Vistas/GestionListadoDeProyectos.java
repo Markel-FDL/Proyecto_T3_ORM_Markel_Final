@@ -5,8 +5,9 @@
 package Vistas;
 
 
-import com.mycompany.proyectos_t3_orm_markel_final.Operaciones;
-import com.mycompany.proyectos_t3_orm_markel_final.ProyectosEntity;
+import com.mycompany.ProyectosEntity;
+import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
+
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author 9fdam05
  */
 public class GestionListadoDeProyectos extends javax.swing.JFrame {
-    static Operaciones operaciones = new Operaciones();
+    static Acciones acciones = new Acciones();
 
     static ArrayList<ProyectosEntity> listaProyectos;
 
@@ -325,17 +326,20 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
 
     private void insertarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarBotonActionPerformed
         if (!codProy.getText().equals("") && !nombreProy.getText().equals("") && !ciudadProy.getText().equals("")) {
-            ProyectosEntity p = new ProyectosEntity();
-            p.setCodigo(codProy.getText().toUpperCase());
-            p.setNombre(nombreProy.getText());
-            p.setCiudad(ciudadProy.getText());
-            switch (operaciones.anadirProyecto(p)) {
+            ProyectosEntity proyectos = new ProyectosEntity();
+            proyectos.setCodigo(codProy.getText().toUpperCase());
+            proyectos.setNombre(nombreProy.getText());
+            proyectos.setCiudad(ciudadProy.getText());
+            switch (acciones.anadirProyecto(proyectos)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Se ha insertado el nuevo proveedor correctamente >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< Error al insertar proveedor >>", "Error de insercion", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< Proveedor existente con ese codigo >>", "Codigo existente", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "<< Faltan datos para insertar >>", "Faltan datos", JOptionPane.ERROR_MESSAGE);
@@ -344,18 +348,21 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_insertarBotonActionPerformed
 
     private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
-        ProyectosEntity p = new ProyectosEntity();
+        ProyectosEntity proyectos = new ProyectosEntity();
         if (!codProy.getText().equals("")) {
-            p.setCodigo(codProy.getText());
-            p.setNombre(nombreProy.getText());
-            p.setCiudad(ciudadProy.getText());
-            switch (operaciones.actualizarProyecto(p)) {
+            proyectos.setCodigo(codProy.getText());
+            proyectos.setNombre(nombreProy.getText());
+            proyectos.setCiudad(ciudadProy.getText());
+            switch (acciones.actualizarProyecto(proyectos)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Actualizado correctamente >>");
+                    break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< No se ha encontrado proveedor >>", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                    break;
                 case 2 :
                     JOptionPane.showMessageDialog(this, "<< Error al actualizar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "<< Introduce un codigo para modificar un proyecto >>", "Falta de codigo", JOptionPane.WARNING_MESSAGE);
@@ -368,18 +375,21 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarBotonActionPerformed
 
     private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
-        ProyectosEntity p = new ProyectosEntity();
+        ProyectosEntity proyectos = new ProyectosEntity();
         if (!codProy.getText().equals("")) {
             int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Borrado", JOptionPane.YES_NO_OPTION);
             if (opcion == 0) {
-                p.setCodigo(codProy.getText());
-                switch (operaciones.eliminarProyecto(p)) {
+                proyectos.setCodigo(codProy.getText());
+                switch (acciones.eliminarProyecto(proyectos)) {
                     case 0 :
                         JOptionPane.showMessageDialog(this, "<< Se ha eliminado el proyecto correctamente >>");
+                        break;
                     case 1 :
                         JOptionPane.showMessageDialog(this, "<< No hay proyecto con el codigo intoducido", "Error de codigo", JOptionPane.ERROR_MESSAGE);
+                        break;
                     case 2 :
                         JOptionPane.showMessageDialog(this, "<< Error al eliminar >>", "Error de BD", JOptionPane.ERROR_MESSAGE);
+                        break;
                 }
 
             } else {
@@ -438,7 +448,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void cargarTab() {
-        listaProyectos = operaciones.listarProyectos();
+        listaProyectos = acciones.listarProyectos();
         contador = 0;
         cargarProyecto(contador);
     }
