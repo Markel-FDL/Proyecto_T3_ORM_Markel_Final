@@ -137,7 +137,7 @@ public class ConsultaDeProveedoresPorCodigo extends javax.swing.JFrame {
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
 
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<ProveedoresEntity> proveedores = acciones.listarProveedorFiltro("codigo", textoCodigo.getText());
+            ArrayList<ProveedoresEntity> proveedores = acciones.mostrarProveedorPorFiltro("codigo", textoCodigo.getText());
             if (proveedores.size() > 0) {
                 listaProveedores = proveedores;
                 codigo = new String[listaProveedores.size()];

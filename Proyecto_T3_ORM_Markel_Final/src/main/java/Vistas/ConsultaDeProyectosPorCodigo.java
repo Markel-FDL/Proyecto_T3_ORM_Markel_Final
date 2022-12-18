@@ -124,7 +124,7 @@ public class ConsultaDeProyectosPorCodigo extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<ProyectosEntity> proyectos = acciones.listarProyectosFiltro("codigo", textoCodigo.getText());
+            ArrayList<ProyectosEntity> proyectos = acciones.mostrarProyectosPorFiltro("codigo", textoCodigo.getText());
             if (proyectos.size() > 0) {
                 listaProyectos = proyectos;
                 codigo = new String[listaProyectos.size()];

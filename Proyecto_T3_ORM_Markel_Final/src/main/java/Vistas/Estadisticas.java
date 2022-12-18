@@ -215,7 +215,7 @@ public class Estadisticas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cargarDatos() {
-        datos = acciones.listarDatosEstadisticas();
+        datos = acciones.mostrarDatosDeEstadisticas();
         t0.setText(datos.get(0)[0].toString());
         t1.setText(datos.get(0)[1].toString());
         t2.setText(datos.get(1)[0].toString());

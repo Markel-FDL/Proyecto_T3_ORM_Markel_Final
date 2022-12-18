@@ -324,7 +324,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cargaDeDatos() {
-        listaProyectos = acciones.listarProyectos();
+        listaProyectos = acciones.mostrarProyectos();
         String[] codigosOperacines = new String[listaProyectos.size()];
         for (int i = 0; i < listaProyectos.size(); i++) {
             codigosOperacines[i] = listaProyectos.get(i).getCodigo();
@@ -340,7 +340,7 @@ public class GestionPiezasProveedoresProyectos extends javax.swing.JFrame {
         DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel(codigosProveedores);
         comboProveedor.setModel(defaultComboBoxModel2);
 
-        listaPiezas = acciones.listarPiezas();
+        listaPiezas = acciones.mostraPiezas();
         String[] codigosPiezas = new String[listaPiezas.size()];
         for (int i = 0; i < listaPiezas.size(); i++) {
             codigosPiezas[i] = listaPiezas.get(i).getCodigo();

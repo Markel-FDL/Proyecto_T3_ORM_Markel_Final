@@ -532,7 +532,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarBoton2ActionPerformed
 
     private void cargarDatos() {
-        listaPiezas = acciones.listarPiezas();
+        listaPiezas = acciones.mostraPiezas();
         contador = 0;
         cargarProveedor(contador);
     }

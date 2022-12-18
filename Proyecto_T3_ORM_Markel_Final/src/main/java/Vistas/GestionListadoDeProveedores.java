@@ -392,7 +392,7 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
             proveedores.setNombre(nombreProv.getText());
             proveedores.setApellidos(apellidoProv.getText());
             proveedores.setDireccion(direccionProv.getText());
-            switch (acciones.actualizarProveedor(proveedores)) {
+            switch (acciones.actualizarProveedores(proveedores)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Proveedor actualizado correctamente >>");
                     break;

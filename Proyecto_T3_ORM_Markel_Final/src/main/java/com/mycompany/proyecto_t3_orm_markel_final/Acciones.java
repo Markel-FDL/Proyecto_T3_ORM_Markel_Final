@@ -13,7 +13,7 @@ public class Acciones {
     public static void main(String[] args) {
         Acciones operaciones = new Acciones();
 
-        GestionEntity gestion = operaciones.recuperarGestionCodigo(new String[]{"PI0001", "PY0001", "PV0001"});
+        GestionEntity gestion = operaciones.mostrarGestionPorCodigo(new String[]{"PI0001", "PY0001", "PV0001"});
         System.out.println(gestion.getPiezasCodigo());
     }
 
@@ -37,7 +37,7 @@ public class Acciones {
         }
     }
 
-    public PiezasEntity recuperarPiezaCodigo(String cod) {
+    public PiezasEntity mostrarPiezaPorCodigo(String cod) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -57,36 +57,36 @@ public class Acciones {
         return new PiezasEntity();
     }
 
-    public int actualizarPieza(PiezasEntity dpieza) {
+    public int actualizarPieza(PiezasEntity pieza) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        PiezasEntity p;
+        PiezasEntity piezas;
 
         try {
-            p = recuperarPiezaCodigo(dpieza.getCodigo());
+            piezas = mostrarPiezaPorCodigo(pieza.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (piezas != null) {
 
             try {
-                if (!dpieza.getNombre().equals("")) {
-                    p.setNombre(dpieza.getNombre());
+                if (!pieza.getNombre().equals("")) {
+                    piezas.setNombre(pieza.getNombre());
                 }
 
-                if (dpieza.getPrecio() > 0.0) {
-                    p.setPrecio(dpieza.getPrecio());
+                if (pieza.getPrecio() > 0.0) {
+                    piezas.setPrecio(pieza.getPrecio());
                 }
 
-                if (!dpieza.getDescripcion().equals("")) {
-                    p.setDescripcion(dpieza.getDescripcion());
+                if (!pieza.getDescripcion().equals("")) {
+                    piezas.setDescripcion(pieza.getDescripcion());
                 }
 
-                session.update(p);
+                session.update(piezas);
                 tx.commit();
                 session.close();
                 return 0;
@@ -101,24 +101,24 @@ public class Acciones {
         }
     }
 
-    public int eliminarPieza(PiezasEntity dpieza) {
+    public int eliminarPieza(PiezasEntity pieza) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        PiezasEntity p;
+        PiezasEntity piezas;
 
         try {
-            p = recuperarPiezaCodigo(dpieza.getCodigo());
+            piezas = mostrarPiezaPorCodigo(pieza.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (piezas != null) {
 
             try {
-                session.delete(p);
+                session.delete(piezas);
                 tx.commit();
                 session.close();
                 return 0;
@@ -132,7 +132,7 @@ public class Acciones {
         }
     }
 
-    public ArrayList<PiezasEntity> listarPiezas() {
+    public ArrayList<PiezasEntity> mostraPiezas() {
         ArrayList<PiezasEntity> lpiezas = new ArrayList<PiezasEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
@@ -140,13 +140,13 @@ public class Acciones {
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT * FROM piezas ORDER BY codigo;").list()) {
-            Object[] tupla = (Object[]) value;
-            PiezasEntity pie = new PiezasEntity();
-            pie.setCodigo((String) tupla[0]);
-            pie.setNombre((String) tupla[1]);
-            pie.setPrecio(Double.parseDouble(tupla[2].toString()));
-            pie.setDescripcion((String) tupla[3]);
-            lpiezas.add(pie);
+            Object[] linea = (Object[]) value;
+            PiezasEntity piezas = new PiezasEntity();
+            piezas.setCodigo((String) linea[0]);
+            piezas.setNombre((String) linea[1]);
+            piezas.setPrecio(Double.parseDouble(linea[2].toString()));
+            piezas.setDescripcion((String) linea[3]);
+            lpiezas.add(piezas);
         }
 
         tx.commit();
@@ -154,7 +154,7 @@ public class Acciones {
         return lpiezas;
     }
 
-    public ArrayList<PiezasEntity> listarPiezasFiltro(String campo, String filtro) {
+    public ArrayList<PiezasEntity> mostrarPiezasPorFiltro(String campo, String filtro) {
         ArrayList<PiezasEntity> lpiezas = new ArrayList<PiezasEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
@@ -163,12 +163,12 @@ public class Acciones {
 
         filtro = "'%" + filtro.toLowerCase() + "%'";
         for (Object value : session.createSQLQuery("SELECT * FROM piezas  WHERE LOWER(" + campo + ") LIKE " + filtro + "").list()) {
-            Object[] tupla = (Object[]) value;
+            Object[] linea = (Object[]) value;
             PiezasEntity pie = new PiezasEntity();
-            pie.setCodigo((String) tupla[0]);
-            pie.setNombre((String) tupla[1]);
-            pie.setPrecio(Double.parseDouble(tupla[2].toString()));
-            pie.setDescripcion((String) tupla[3]);
+            pie.setCodigo((String) linea[0]);
+            pie.setNombre((String) linea[1]);
+            pie.setPrecio(Double.parseDouble(linea[2].toString()));
+            pie.setDescripcion((String) linea[3]);
             lpiezas.add(pie);
         }
 
@@ -197,7 +197,7 @@ public class Acciones {
         }
     }
 
-    public ProveedoresEntity recuperarProveedorCodigo(String cod) {
+    public ProveedoresEntity mostrarProveedorPorCodigo(String cod) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -217,36 +217,36 @@ public class Acciones {
         return new ProveedoresEntity();
     }
 
-    public int actualizarProveedor(ProveedoresEntity dproveedor) {
+    public int actualizarProveedores(ProveedoresEntity dproveedor) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        ProveedoresEntity p;
+        ProveedoresEntity proveedores;
 
         try {
-            p = recuperarProveedorCodigo(dproveedor.getCodigo());
+            proveedores = mostrarProveedorPorCodigo(dproveedor.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (proveedores != null) {
 
             try {
                 if (!dproveedor.getNombre().equals("")) {
-                    p.setNombre(dproveedor.getNombre());
+                    proveedores.setNombre(dproveedor.getNombre());
                 }
 
                 if (!dproveedor.getApellidos().equals("")) {
-                    p.setApellidos(dproveedor.getApellidos());
+                    proveedores.setApellidos(dproveedor.getApellidos());
                 }
 
                 if (!dproveedor.getDireccion().equals("")) {
-                    p.setDireccion(dproveedor.getDireccion());
+                    proveedores.setDireccion(dproveedor.getDireccion());
                 }
 
-                session.update(p);
+                session.update(proveedores);
                 tx.commit();
                 session.close();
                 return 0;
@@ -267,18 +267,18 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        ProveedoresEntity p;
+        ProveedoresEntity proveedores;
 
         try {
-            p = recuperarProveedorCodigo(dproveedor.getCodigo());
+            proveedores = mostrarProveedorPorCodigo(dproveedor.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (proveedores != null) {
 
             try {
-                session.delete(p);
+                session.delete(proveedores);
                 tx.commit();
                 session.close();
                 return 0;
@@ -293,29 +293,29 @@ public class Acciones {
     }
 
     public ArrayList<ProveedoresEntity> listarProveedores() {
-        ArrayList<ProveedoresEntity> lproveedores = new ArrayList<ProveedoresEntity>();
+        ArrayList<ProveedoresEntity> listaProveedores = new ArrayList<ProveedoresEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT * FROM proveedores ORDER BY codigo;").list()) {
-            Object[] tupla = (Object[]) value;
+            Object[] linea = (Object[]) value;
             ProveedoresEntity prov = new ProveedoresEntity();
-            prov.setCodigo((String) tupla[0]);
-            prov.setNombre((String) tupla[1]);
-            prov.setApellidos((String) tupla[2]);
-            prov.setDireccion((String) tupla[3]);
-            lproveedores.add(prov);
+            prov.setCodigo((String) linea[0]);
+            prov.setNombre((String) linea[1]);
+            prov.setApellidos((String) linea[2]);
+            prov.setDireccion((String) linea[3]);
+            listaProveedores.add(prov);
         }
 
         tx.commit();
         session.close();
-        return lproveedores;
+        return listaProveedores;
     }
 
-    public ArrayList<ProveedoresEntity> listarProveedorFiltro(String campo, String filtro) {
-        ArrayList<ProveedoresEntity> lproveedores = new ArrayList<ProveedoresEntity>();
+    public ArrayList<ProveedoresEntity> mostrarProveedorPorFiltro(String campo, String filtro) {
+        ArrayList<ProveedoresEntity> listaProveedores = new ArrayList<ProveedoresEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -323,18 +323,18 @@ public class Acciones {
 
         filtro = "'%" + filtro.toLowerCase() + "%'";
         for (Object value : session.createSQLQuery("SELECT * FROM proveedores  WHERE LOWER(" + campo + ") LIKE " + filtro + "").list()) {
-            Object[] tupla = (Object[]) value;
+            Object[] linea = (Object[]) value;
             ProveedoresEntity prov = new ProveedoresEntity();
-            prov.setCodigo((String) tupla[0]);
-            prov.setNombre((String) tupla[1]);
-            prov.setApellidos((String) tupla[2]);
-            prov.setDireccion((String) tupla[3]);
-            lproveedores.add(prov);
+            prov.setCodigo((String) linea[0]);
+            prov.setNombre((String) linea[1]);
+            prov.setApellidos((String) linea[2]);
+            prov.setDireccion((String) linea[3]);
+            listaProveedores.add(prov);
         }
 
         tx.commit();
         session.close();
-        return lproveedores;
+        return listaProveedores;
     }
 
 
@@ -357,7 +357,7 @@ public class Acciones {
         }
     }
 
-    public ProyectosEntity recuperarProyectoCodigo(String cod) {
+    public ProyectosEntity mostrarProyectoPorCodigo(String cod) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -383,26 +383,26 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        ProyectosEntity p;
+        ProyectosEntity proyectos;
 
         try {
-            p = recuperarProyectoCodigo(dproyecto.getCodigo());
+            proyectos = mostrarProyectoPorCodigo(dproyecto.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (proyectos != null) {
 
             try {
                 if (!dproyecto.getNombre().equals("")) {
-                    p.setNombre(dproyecto.getNombre());
+                    proyectos.setNombre(dproyecto.getNombre());
                 }
 
                 if (!dproyecto.getCiudad().equals("")) {
-                    p.setCiudad(dproyecto.getCiudad());
+                    proyectos.setCiudad(dproyecto.getCiudad());
                 }
 
-                session.update(p);
+                session.update(proyectos);
                 tx.commit();
                 session.close();
                 return 0;
@@ -423,18 +423,18 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        ProyectosEntity p;
+        ProyectosEntity proyectos;
 
         try {
-            p = recuperarProyectoCodigo(dproyecto.getCodigo());
+            proyectos = mostrarProyectoPorCodigo(dproyecto.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (p != null) {
+        if (proyectos != null) {
 
             try {
-                session.delete(p);
+                session.delete(proyectos);
                 tx.commit();
                 session.close();
                 return 0;
@@ -448,29 +448,29 @@ public class Acciones {
         }
     }
 
-    public ArrayList<ProyectosEntity> listarProyectos() {
-        ArrayList<ProyectosEntity> lproyectos = new ArrayList<ProyectosEntity>();
+    public ArrayList<ProyectosEntity> mostrarProyectos() {
+        ArrayList<ProyectosEntity> listaProyectos = new ArrayList<ProyectosEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT * FROM proyectos ORDER BY codigo;").list()) {
-            Object[] tupla = (Object[]) value;
+            Object[] linea = (Object[]) value;
             ProyectosEntity pro = new ProyectosEntity();
-            pro.setCodigo((String) tupla[0]);
-            pro.setNombre((String) tupla[1]);
-            pro.setCiudad((String) tupla[2]);
-            lproyectos.add(pro);
+            pro.setCodigo((String) linea[0]);
+            pro.setNombre((String) linea[1]);
+            pro.setCiudad((String) linea[2]);
+            listaProyectos.add(pro);
         }
 
         tx.commit();
         session.close();
-        return lproyectos;
+        return listaProyectos;
     }
 
-    public ArrayList<ProyectosEntity> listarProyectosFiltro(String campo, String filtro) {
-        ArrayList<ProyectosEntity> lproyectos = new ArrayList<ProyectosEntity>();
+    public ArrayList<ProyectosEntity> mostrarProyectosPorFiltro(String campo, String filtro) {
+        ArrayList<ProyectosEntity> listaProyectos = new ArrayList<ProyectosEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -478,17 +478,17 @@ public class Acciones {
 
         filtro = "'%" + filtro.toLowerCase() + "%'";
         for (Object value : session.createSQLQuery("SELECT * FROM proyectos  WHERE LOWER(" + campo + ") LIKE " + filtro + "").list()) {
-            Object[] tupla = (Object[]) value;
+            Object[] linea = (Object[]) value;
             ProyectosEntity pro = new ProyectosEntity();
-            pro.setCodigo((String) tupla[0]);
-            pro.setNombre((String) tupla[1]);
-            pro.setCiudad((String) tupla[2]);
-            lproyectos.add(pro);
+            pro.setCodigo((String) linea[0]);
+            pro.setNombre((String) linea[1]);
+            pro.setCiudad((String) linea[2]);
+            listaProyectos.add(pro);
         }
 
         tx.commit();
         session.close();
-        return lproyectos;
+        return listaProyectos;
     }
 
 
@@ -513,7 +513,7 @@ public class Acciones {
         }
     }
 
-    public GestionEntity recuperarGestionCodigo(String[] codigos) {
+    public GestionEntity mostrarGestionPorCodigo(String[] codigos) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -543,22 +543,22 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        GestionEntity g;
+        GestionEntity gestion;
 
         try {
-            g = recuperarGestionCodigo(dgestion);
+            gestion = mostrarGestionPorCodigo(dgestion);
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (g != null) {
+        if (gestion != null) {
 
             try {
                 if (cantidad > 0) {
-                    g.setCantidad(cantidad);
+                    gestion.setCantidad(cantidad);
                 }
 
-                session.update(g);
+                session.update(gestion);
                 tx.commit();
                 session.close();
                 return 0;
@@ -579,18 +579,18 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        GestionEntity g;
+        GestionEntity gestion;
 
         try {
-            g = recuperarGestionCodigo(dgestion);
+            gestion = mostrarGestionPorCodigo(dgestion);
         } catch (Exception e) {
             session.close();
             return 1;
         }
-        if (g != null) {
+        if (gestion != null) {
 
             try {
-                session.delete(g);
+                session.delete(gestion);
                 tx.commit();
                 session.close();
                 return 0;
@@ -604,29 +604,29 @@ public class Acciones {
         }
     }
 
-    public ArrayList<GestionEntity> listarGestion() {
-        ArrayList<GestionEntity> lgestion = new ArrayList<GestionEntity>();
+    public ArrayList<GestionEntity> mostrarGestion() {
+        ArrayList<GestionEntity> listaGestion = new ArrayList<GestionEntity>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT * FROM gestion;").list()) {
-            Object[] tupla = (Object[]) value;
-            GestionEntity gest = new GestionEntity();
-            gest.setCantidad((Double) tupla[0]);
-            gest.setPiezasCodigo((String) tupla[1]);
-            gest.setProyectosCodigo((String) tupla[2]);
-            gest.setProveedoresCodigo((String) tupla[3]);
-            lgestion.add(gest);
+            Object[] linea = (Object[]) value;
+            GestionEntity gestion = new GestionEntity();
+            gestion.setCantidad((Double) linea[0]);
+            gestion.setPiezasCodigo((String) linea[1]);
+            gestion.setProyectosCodigo((String) linea[2]);
+            gestion.setProveedoresCodigo((String) linea[3]);
+            listaGestion.add(gestion);
         }
 
         tx.commit();
         session.close();
-        return lgestion;
+        return listaGestion;
     }
 
-    public ArrayList<Object[]> listarTablaPiezaProveedor() {
+    public ArrayList<Object[]> mostrarTablaDePiezaProveedor() {
         ArrayList<Object[]> datos = new ArrayList<Object[]>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
@@ -634,8 +634,8 @@ public class Acciones {
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT p.codigo, p.nombre, p.apellidos, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proveedores_codigo = p.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proveedores_codigo = p.codigo) , 0), (SELECT COUNT( DISTINCT proyectos_codigo) FROM gestion WHERE proveedores_codigo = p.codigo) FROM proveedores p;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datos.add(linea);
         }
 
         tx.commit();
@@ -644,90 +644,90 @@ public class Acciones {
     }
 
     public ArrayList<Object[]> listarTablaPiezaProyecto() {
-        ArrayList<Object[]> datos = new ArrayList<Object[]>();
+        ArrayList<Object[]> datosProy = new ArrayList<Object[]>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT p.*, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proyectos_codigo = p.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proyectos_codigo = p.codigo) , 0), (SELECT COUNT( DISTINCT proveedores_codigo) FROM gestion WHERE proyectos_codigo = p.codigo) FROM proyectos p;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         tx.commit();
         session.close();
-        return datos;
+        return datosProy;
     }
 
-    public ArrayList<Object[]> listarDatosEstadisticas() {
-        ArrayList<Object[]> datos = new ArrayList<Object[]>();
+    public ArrayList<Object[]> mostrarDatosDeEstadisticas() {
+        ArrayList<Object[]> datosProy = new ArrayList<Object[]>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT piezas_codigo, MAX(sums) FROM (SELECT piezas_codigo,SUM(cantidad) AS sums FROM gestion GROUP BY piezas_codigo) as subtabla;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         for (Object value : session.createSQLQuery("SELECT piezas_codigo, MAX(cuenta) FROM (SELECT piezas_codigo,COUNT(DISTINCT proyectos_codigo) AS cuenta FROM gestion GROUP BY piezas_codigo) as subtabla;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         for (Object value : session.createSQLQuery("SELECT proveedores_codigo, MAX(sums) FROM (SELECT proveedores_codigo,SUM(cantidad) AS sums FROM gestion GROUP BY proveedores_codigo) as subtabla;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         for (Object value : session.createSQLQuery("SELECT proveedores_codigo, MAX(cuenta) FROM (SELECT proveedores_codigo,COUNT(DISTINCT proyectos_codigo) AS cuenta FROM gestion GROUP BY proveedores_codigo) as subtabla;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         for (Object value : session.createSQLQuery("SELECT proveedores_codigo, MAX(cuenta) FROM (SELECT proveedores_codigo,COUNT(DISTINCT proyectos_codigo) AS cuenta FROM gestion GROUP BY proveedores_codigo) as subtabla;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProy.add(linea);
         }
 
         tx.commit();
         session.close();
-        return datos;
+        return datosProy;
     }
 
     public ArrayList<Object[]> listarDatosSuministrosPiezas() {
-        ArrayList<Object[]> datos = new ArrayList<Object[]>();
+        ArrayList<Object[]> datosPie = new ArrayList<Object[]>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT p.*, COALESCE((SELECT SUM(cantidad) AS sums FROM gestion g WHERE g.piezas_codigo = p.codigo), 0) as canttotal ,(SELECT COUNT(DISTINCT g.proyectos_codigo) AS count FROM gestion g WHERE g.piezas_codigo = p.codigo) as nproyectos, (SELECT COUNT(DISTINCT g.proveedores_codigo) AS count FROM gestion g WHERE g.piezas_codigo = p.codigo) as nproveedores  FROM piezas p").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosPie.add(linea);
         }
 
         tx.commit();
         session.close();
-        return datos;
+        return datosPie;
     }
 
     public ArrayList<Object[]> listarDatosSuministrosProveedor() {
-        ArrayList<Object[]> datos = new ArrayList<Object[]>();
+        ArrayList<Object[]> datosProv = new ArrayList<Object[]>();
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         for (Object value : session.createSQLQuery("SELECT p.*, (SELECT COUNT(DISTINCT piezas_codigo) FROM gestion WHERE proveedores_codigo = p.codigo) AS npieza, (SELECT COUNT(DISTINCT proveedores_codigo) FROM gestion WHERE proveedores_codigo = p.codigo) AS nproyectos   FROM proveedores p;").list()) {
-            Object[] tupla = (Object[]) value;
-            datos.add(tupla);
+            Object[] linea = (Object[]) value;
+            datosProv.add(linea);
         }
 
         tx.commit();
         session.close();
-        return datos;
+        return datosProv;
     }
 }

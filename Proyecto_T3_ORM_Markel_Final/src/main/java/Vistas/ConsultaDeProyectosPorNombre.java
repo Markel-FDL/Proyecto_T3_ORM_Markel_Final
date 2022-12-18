@@ -106,7 +106,7 @@ public class ConsultaDeProyectosPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!Busqueda.getText().trim().equals("")) {
-            ArrayList<ProyectosEntity> temp = acciones.listarProyectosFiltro("nombre", Busqueda.getText());
+            ArrayList<ProyectosEntity> temp = acciones.mostrarProyectosPorFiltro("nombre", Busqueda.getText());
             if (temp.size() > 0) {
                 listaProyectos = temp;
 

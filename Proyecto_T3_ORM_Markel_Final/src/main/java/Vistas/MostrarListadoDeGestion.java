@@ -72,7 +72,7 @@ public class MostrarListadoDeGestion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ArrayList<GestionEntity> gestion = acciones.listarGestion();
+        ArrayList<GestionEntity> gestion = acciones.mostrarGestion();
         if (gestion.size() > 0) {
             DefaultTableModel model = new DefaultTableModel(columna, 0);
             for (GestionEntity gest : gestion) {

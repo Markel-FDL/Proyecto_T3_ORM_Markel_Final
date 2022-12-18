@@ -102,7 +102,7 @@ public class ConsultaDeProveedoresPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoBusqueda.getText().trim().equals("")) {
-            ArrayList<ProveedoresEntity> proveedores = acciones.listarProveedorFiltro("nombre", textoBusqueda.getText());
+            ArrayList<ProveedoresEntity> proveedores = acciones.mostrarProveedorPorFiltro("nombre", textoBusqueda.getText());
             if (proveedores.size() > 0) {
                 listaProveedores = proveedores;
 

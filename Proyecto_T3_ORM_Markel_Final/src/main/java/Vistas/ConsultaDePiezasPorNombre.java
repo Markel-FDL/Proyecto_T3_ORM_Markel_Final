@@ -102,7 +102,7 @@ public class ConsultaDePiezasPorNombre extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoBusqueda.getText().trim().equals("")) {
-            ArrayList<PiezasEntity> piezas = acciones.listarPiezasFiltro("nombre", textoBusqueda.getText());
+            ArrayList<PiezasEntity> piezas = acciones.mostrarPiezasPorFiltro("nombre", textoBusqueda.getText());
             if (piezas.size() > 0) {
                 listaPiezas = piezas;
 

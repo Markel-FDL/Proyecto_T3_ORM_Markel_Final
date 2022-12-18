@@ -484,7 +484,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarBoton2ActionPerformed
 
     private void cargarDatos() {
-        listaProyectos = acciones.listarProyectos();
+        listaProyectos = acciones.mostrarProyectos();
         contador = 0;
         cargarProyecto(contador);
     }

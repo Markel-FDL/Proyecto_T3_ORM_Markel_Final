@@ -101,7 +101,7 @@ public class ConsultaDeProyectosPorCiudad extends javax.swing.JFrame {
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoBusqueda.getText().trim().equals("")) {
-            ArrayList<ProyectosEntity> proyecto = acciones.listarProyectosFiltro("ciudad", textoBusqueda.getText());
+            ArrayList<ProyectosEntity> proyecto = acciones.mostrarProyectosPorFiltro("ciudad", textoBusqueda.getText());
             if (proyecto.size() > 0) {
                 listaProyectos = proyecto;
 

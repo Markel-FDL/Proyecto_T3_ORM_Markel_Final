@@ -121,19 +121,19 @@ public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
 
     private void combocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
         if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
-            PiezasEntity p = new PiezasEntity();
-            p = listaPiezas.get(comboCodigos.getSelectedIndex());
-            jTextArea1.setText("Nombre: " + p.getNombre() + "\n" +
+            PiezasEntity piezas = new PiezasEntity();
+            piezas = listaPiezas.get(comboCodigos.getSelectedIndex());
+            jTextArea1.setText("Nombre: " + piezas.getNombre() + "\n" +
                     "\n" +
-                    "Precio: " + p.getPrecio() + "\n" +
+                    "Precio: " + piezas.getPrecio() + "\n" +
                     "\n" +
-                    "Descripcion:  " + p.getDescripcion() + "\n");
+                    "Descripcion:  " + piezas.getDescripcion() + "\n");
         }
     }//GEN-LAST:event_combocodigoActionPerformed
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
         if (!textoCodigo.getText().trim().equals("")) {
-            ArrayList<PiezasEntity> temp = acciones.listarPiezasFiltro("codigo", textoCodigo.getText());
+            ArrayList<PiezasEntity> temp = acciones.mostrarPiezasPorFiltro("codigo", textoCodigo.getText());
             if (temp.size() > 0) {
                 listaPiezas = temp;
                 codigo = new String[listaPiezas.size()];

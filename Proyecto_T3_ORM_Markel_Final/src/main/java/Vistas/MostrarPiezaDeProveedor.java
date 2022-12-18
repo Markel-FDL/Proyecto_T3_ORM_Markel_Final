@@ -69,7 +69,7 @@ public class MostrarPiezaDeProveedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ArrayList<Object[]> objeto = operaciones.listarTablaPiezaProveedor();
+        ArrayList<Object[]> objeto = operaciones.mostrarTablaDePiezaProveedor();
         if (objeto.size() > 0) {
 
             DefaultTableModel model = new DefaultTableModel(columna, 0);
