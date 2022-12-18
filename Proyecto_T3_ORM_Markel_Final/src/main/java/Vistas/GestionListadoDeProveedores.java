@@ -521,7 +521,7 @@ public class GestionListadoDeProveedores extends javax.swing.JFrame {
 
     private void cargarProveedor(int contador) {
         if (!listaProveedores.isEmpty()) {
-            posicion.setText(contador + 1 + "/" + listaProveedores.size());
+            posicion.setText(contador + 1 + "////" + listaProveedores.size());
             codigoProv2.setText(listaProveedores.get(contador).getCodigo());
             nombreProv2.setText(listaProveedores.get(contador).getNombre());
             apellidoProv2.setText(listaProveedores.get(contador).getApellidos());

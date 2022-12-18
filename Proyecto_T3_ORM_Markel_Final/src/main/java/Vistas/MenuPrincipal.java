@@ -326,9 +326,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_Suministros_por_piezasMouseClicked
 
     private void EstadísticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstadísticasMouseClicked
-        SuministroDePiezas suministroDePiezas = new SuministroDePiezas();
-        suministroDePiezas.setLocationRelativeTo(null);
-        suministroDePiezas.setVisible(true);
+        Estadisticas estadisticas = new Estadisticas();
+        estadisticas.setLocationRelativeTo(null);
+        estadisticas.setVisible(true);
     }//GEN-LAST:event_EstadísticasMouseClicked
 
     private void AyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaMouseClicked

@@ -539,7 +539,7 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
 
     private void cargarProveedor(int contador) {
         if (!listaPiezas.isEmpty()) {
-            posicion.setText(contador + 1 + "/" + listaPiezas.size());
+            posicion.setText(contador + 1 + "////" + listaPiezas.size());
             datosCodigoPie.setText(listaPiezas.get(contador).getCodigo());
             datosNombrePie.setText(listaPiezas.get(contador).getNombre());
             datoPrecio.setValue(listaPiezas.get(contador).getPrecio());

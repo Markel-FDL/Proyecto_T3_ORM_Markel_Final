@@ -16,8 +16,5 @@ public class Main {
         vp.setLocationRelativeTo(null);
         vp.setVisible(true);
 
-        
-        //GestionProyectos gp = new GestionProyectos();
-        //gp.setVisible(true);
     }
 }

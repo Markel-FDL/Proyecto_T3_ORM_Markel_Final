@@ -491,7 +491,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
 
     private void cargarProyecto(int contador) {
         if (!listaProyectos.isEmpty()) {
-            numero.setText(contador + 1 + "/" + listaProyectos.size());
+            numero.setText(contador + 1 + "////" + listaProyectos.size());
             codigoProy2.setText(listaProyectos.get(contador).getCodigo());
             nombreProy2.setText(listaProyectos.get(contador).getNombre());
             ciudadProy2.setText(listaProyectos.get(contador).getCiudad());
