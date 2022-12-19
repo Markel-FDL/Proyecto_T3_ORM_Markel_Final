@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class GestionListadoDePiezas extends javax.swing.JFrame {
     static Acciones acciones = new Acciones();
     static ArrayList<PiezasEntity> listaPiezas;
-    static int contador;
+    static int contador = 0;
 
     /**
      * Creates new form GestionProveedores
@@ -512,9 +512,9 @@ public class GestionListadoDePiezas extends javax.swing.JFrame {
     private void eliminarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBoton2ActionPerformed
         int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
         if (opcion == 0){
-            ProveedoresEntity proveedores = new ProveedoresEntity();
-            proveedores.setCodigo(listaPiezas.get(contador).getCodigo());
-            switch (acciones.eliminarProveedor(proveedores)) {
+            PiezasEntity piezas = new PiezasEntity();
+            piezas.setCodigo(listaPiezas.get(contador).getCodigo());
+            switch (acciones.eliminarPieza(piezas)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
                     cargarDatos();

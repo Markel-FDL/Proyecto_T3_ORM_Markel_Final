@@ -21,7 +21,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
 
     static ArrayList<ProyectosEntity> listaProyectos;
 
-    static int contador = 1;
+    static int contador = 0;
 
     /**
      * Creates new form GestionProyectos
@@ -346,7 +346,7 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
             proyectos.setCiudad(ciudadProy.getText());
             switch (acciones.anadirProyecto(proyectos)) {
                 case 0 :
-                    JOptionPane.showMessageDialog(this, "<< Se ha insertado el nuevo proveedor correctamente >>");
+                    JOptionPane.showMessageDialog(this, "<< Se ha insertado correctamente >>");
                     break;
                 case 1 :
                     JOptionPane.showMessageDialog(this, "<< Error al insertar proveedor >>", "Error de insercion", JOptionPane.ERROR_MESSAGE);
@@ -464,9 +464,9 @@ public class GestionListadoDeProyectos extends javax.swing.JFrame {
     private void eliminarBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBoton2ActionPerformed
         int opcion = JOptionPane.showConfirmDialog(this, "<< ¿Estas seguro de eliminar? >>", "Confirmacion de borrado", JOptionPane.YES_NO_OPTION);
         if (opcion == 0){
-            ProveedoresEntity p = new ProveedoresEntity();
-            p.setCodigo(listaProyectos.get(contador).getCodigo());
-            switch (acciones.eliminarProveedor(p)) {
+            ProyectosEntity proyectos = new ProyectosEntity();
+            proyectos.setCodigo(listaProyectos.get(contador).getCodigo());
+            switch (acciones.eliminarProyecto(proyectos)) {
                 case 0 :
                     JOptionPane.showMessageDialog(this, "<< Se ha eliminado correctamente >>");
                     cargarDatos();
