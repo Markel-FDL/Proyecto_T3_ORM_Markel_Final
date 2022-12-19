@@ -116,13 +116,22 @@ public class ConsultaDeProveedoresPorCodigo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboCodigosActionPerformed(ActionEvent evt) {
+        if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
+            ProveedoresEntity p = new ProveedoresEntity();
+            p = listaProveedores.get(comboCodigos.getSelectedIndex());
+            jTextArea1.setText("Nombre: " + p.getNombre() + "\n" +
+                    "\n" +
+                    "Apellidos: " + p.getApellidos() + "\n" +
+                    "\n" +
+                    "Direccion:  " + p.getDireccion() + "\n");
+        }
     }
 
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoCodigoActionPerformed
 
-    private void combocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
+    private void comboCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocodigoActionPerformed
         if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
             ProveedoresEntity p = new ProveedoresEntity();
             p = listaProveedores.get(comboCodigos.getSelectedIndex());

@@ -113,6 +113,15 @@ public class ConsultaDePiezasPorCodigo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboCodigosActionPerformed(ActionEvent evt) {
+        if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
+            PiezasEntity piezas = new PiezasEntity();
+            piezas = listaPiezas.get(comboCodigos.getSelectedIndex());
+            jTextArea1.setText("Nombre: " + piezas.getNombre() + "\n" +
+                    "\n" +
+                    "Precio: " + piezas.getPrecio() + "\n" +
+                    "\n" +
+                    "Descripcion:  " + piezas.getDescripcion() + "\n");
+        }
     }
 
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed

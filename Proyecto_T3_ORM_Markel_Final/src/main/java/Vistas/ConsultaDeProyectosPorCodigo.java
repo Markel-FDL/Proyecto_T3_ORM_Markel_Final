@@ -5,6 +5,7 @@
 package Vistas;
 
 
+import com.mycompany.PiezasEntity;
 import com.mycompany.ProyectosEntity;
 import com.mycompany.proyecto_t3_orm_markel_final.Acciones;
 
@@ -116,6 +117,13 @@ public class ConsultaDeProyectosPorCodigo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboCodigosActionPerformed(ActionEvent evt) {
+        if (!comboCodigos.getModel().getSelectedItem().toString().equals("--Realiza busqueda--")) {
+            ProyectosEntity proyectos = new ProyectosEntity();
+            proyectos = listaProyectos.get(comboCodigos.getSelectedIndex());
+            jTextArea1.setText("Nombre: " + proyectos.getNombre() + "\n" +
+                    "\n" +
+                    "Ciudad: " + proyectos.getCiudad() + "\n");
+        }
     }
 
     private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
