@@ -13,7 +13,7 @@ public class Acciones {
     public static void main(String[] args) {
         Acciones operaciones = new Acciones();
 
-        GestionEntity gestion = operaciones.mostrarGestionPorCodigo(new String[]{"PI0001", "PY0001", "PV0001"});
+        GestionEntity gestion = operaciones.mostrarGestionPorCodigo(new String[]{"Opcion01", "Opcion02", "Opcion03"});
         System.out.println(gestion.getPiezasCodigo());
     }
 
@@ -37,7 +37,7 @@ public class Acciones {
         }
     }
 
-    public PiezasEntity mostrarPiezaPorCodigo(String cod) {
+    public PiezasEntity mostrarPiezaPorCodigo(String codigo) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -45,7 +45,7 @@ public class Acciones {
 
         PiezasEntity piezas = new PiezasEntity();
         try {
-            piezas = (PiezasEntity) session.get(PiezasEntity.class, cod);
+            piezas = (PiezasEntity) session.get(PiezasEntity.class, codigo);
             tx.commit();
             session.close();
             return piezas;
@@ -179,13 +179,13 @@ public class Acciones {
 
 
     //Funciones Proveedor
-    public int anadirProveedor(ProveedoresEntity proveedores) {
+    public int anadirProveedor(ProveedoresEntity proveedor) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         try {
-            session.save(proveedores);
+            session.save(proveedor);
             tx.commit();
             session.close();
             return 0;
@@ -197,7 +197,7 @@ public class Acciones {
         }
     }
 
-    public ProveedoresEntity mostrarProveedorPorCodigo(String cod) {
+    public ProveedoresEntity mostrarProveedorPorCodigo(String codigo) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -205,7 +205,7 @@ public class Acciones {
 
         ProveedoresEntity proveedor = new ProveedoresEntity();
         try {
-            proveedor = (ProveedoresEntity) session.get(ProveedoresEntity.class, cod);
+            proveedor = (ProveedoresEntity) session.get(ProveedoresEntity.class, codigo);
             tx.commit();
             session.close();
             return proveedor;
@@ -217,7 +217,7 @@ public class Acciones {
         return new ProveedoresEntity();
     }
 
-    public int actualizarProveedores(ProveedoresEntity dproveedor) {
+    public int actualizarProveedores(ProveedoresEntity proveedor) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -226,7 +226,7 @@ public class Acciones {
         ProveedoresEntity proveedores;
 
         try {
-            proveedores = mostrarProveedorPorCodigo(dproveedor.getCodigo());
+            proveedores = mostrarProveedorPorCodigo(proveedor.getCodigo());
         } catch (Exception e) {
             session.close();
             return 1;
@@ -234,16 +234,16 @@ public class Acciones {
         if (proveedores != null) {
 
             try {
-                if (!dproveedor.getNombre().equals("")) {
-                    proveedores.setNombre(dproveedor.getNombre());
+                if (!proveedor.getNombre().equals("")) {
+                    proveedores.setNombre(proveedor.getNombre());
                 }
 
-                if (!dproveedor.getApellidos().equals("")) {
-                    proveedores.setApellidos(dproveedor.getApellidos());
+                if (!proveedor.getApellidos().equals("")) {
+                    proveedores.setApellidos(proveedor.getApellidos());
                 }
 
-                if (!dproveedor.getDireccion().equals("")) {
-                    proveedores.setDireccion(dproveedor.getDireccion());
+                if (!proveedor.getDireccion().equals("")) {
+                    proveedores.setDireccion(proveedor.getDireccion());
                 }
 
                 session.update(proveedores);
@@ -357,7 +357,7 @@ public class Acciones {
         }
     }
 
-    public ProyectosEntity mostrarProyectoPorCodigo(String cod) {
+    public ProyectosEntity mostrarProyectoPorCodigo(String codigo) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -365,7 +365,7 @@ public class Acciones {
 
         ProyectosEntity proyecto = new ProyectosEntity();
         try {
-            proyecto = (ProyectosEntity) session.get(ProyectosEntity.class, cod);
+            proyecto = (ProyectosEntity) session.get(ProyectosEntity.class, codigo);
             tx.commit();
             session.close();
             return proyecto;
@@ -537,7 +537,7 @@ public class Acciones {
         return new GestionEntity();
     }
 
-    public int actualizarGestion(String[] dgestion, double cantidad) {
+    public int actualizarGestion(String[] gestiones, double numero) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -546,7 +546,7 @@ public class Acciones {
         GestionEntity gestion;
 
         try {
-            gestion = mostrarGestionPorCodigo(dgestion);
+            gestion = mostrarGestionPorCodigo(gestiones);
         } catch (Exception e) {
             session.close();
             return 1;
@@ -554,8 +554,8 @@ public class Acciones {
         if (gestion != null) {
 
             try {
-                if (cantidad > 0) {
-                    gestion.setCantidad(cantidad);
+                if (numero > 0) {
+                    gestion.setCantidad(numero);
                 }
 
                 session.update(gestion);
@@ -573,7 +573,7 @@ public class Acciones {
         }
     }
 
-    public int eliminarGestion(String[] dgestion) {
+    public int eliminarGestion(String[] gestiones) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
@@ -582,7 +582,7 @@ public class Acciones {
         GestionEntity gestion;
 
         try {
-            gestion = mostrarGestionPorCodigo(dgestion);
+            gestion = mostrarGestionPorCodigo(gestiones);
         } catch (Exception e) {
             session.close();
             return 1;
