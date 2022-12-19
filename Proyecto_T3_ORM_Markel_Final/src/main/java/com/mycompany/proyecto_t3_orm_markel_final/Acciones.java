@@ -139,7 +139,7 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        for (Object value : session.createSQLQuery("SELECT * FROM piezas ORDER BY codigo;").list()) {
+        for (Object value : session.createSQLQuery("SELECT * FROM piezas;").list()) {
             Object[] linea = (Object[]) value;
             PiezasEntity piezas = new PiezasEntity();
             piezas.setCodigo((String) linea[0]);
@@ -299,7 +299,7 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        for (Object value : session.createSQLQuery("SELECT * FROM proveedores ORDER BY codigo;").list()) {
+        for (Object value : session.createSQLQuery("SELECT * FROM proveedores;").list()) {
             Object[] linea = (Object[]) value;
             ProveedoresEntity prov = new ProveedoresEntity();
             prov.setCodigo((String) linea[0]);
@@ -455,7 +455,7 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        for (Object value : session.createSQLQuery("SELECT * FROM proyectos ORDER BY codigo;").list()) {
+        for (Object value : session.createSQLQuery("SELECT * FROM proyectos;").list()) {
             Object[] linea = (Object[]) value;
             ProyectosEntity pro = new ProyectosEntity();
             pro.setCodigo((String) linea[0]);
@@ -633,7 +633,7 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        for (Object value : session.createSQLQuery("SELECT p.codigo, p.nombre, p.apellidos, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proveedores_codigo = p.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proveedores_codigo = p.codigo) , 0), (SELECT COUNT( DISTINCT proyectos_codigo) FROM gestion WHERE proveedores_codigo = p.codigo) FROM proveedores p;").list()) {
+        for (Object value : session.createSQLQuery("SELECT prov.codigo, prov.nombre, prov.apellidos, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proveedores_codigo = prov.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proveedores_codigo = prov.codigo) , 0), (SELECT COUNT( DISTINCT proyectos_codigo) FROM gestion WHERE proveedores_codigo = prov.codigo) FROM proveedores prov;").list()) {
             Object[] linea = (Object[]) value;
             datos.add(linea);
         }
@@ -650,7 +650,7 @@ public class Acciones {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        for (Object value : session.createSQLQuery("SELECT p.*, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proyectos_codigo = p.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proyectos_codigo = p.codigo) , 0), (SELECT COUNT( DISTINCT proveedores_codigo) FROM gestion WHERE proyectos_codigo = p.codigo) FROM proyectos p;").list()) {
+        for (Object value : session.createSQLQuery("SELECT proy.*, (SELECT COUNT( DISTINCT piezas_codigo) FROM gestion WHERE proyectos_codigo = proy.codigo), COALESCE((SELECT SUM(cantidad) FROM gestion WHERE proyectos_codigo = proy.codigo) , 0), (SELECT COUNT( DISTINCT proveedores_codigo) FROM gestion WHERE proyectos_codigo = proy.codigo) FROM proyectos proy;").list()) {
             Object[] linea = (Object[]) value;
             datosProy.add(linea);
         }
